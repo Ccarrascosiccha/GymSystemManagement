@@ -1,0 +1,66 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvCodigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Código: 1"
+
+            android:textSize="16sp"
+            style="@style/output"/>
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre: Carlos Daniel Carrasco Siccha"
+            android:fontFamily="@font/poppins_light"
+            style="@style/output"/>
+        <TextView
+            android:id="@+id/tvCelular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Celular: 974144528"
+            android:fontFamily="@font/poppins_light"
+            style="@style/output"/>
+        <TextView
+            android:id="@+id/tvSexo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sexo: M"
+            android:fontFamily="@font/poppins_light"
+            style="@style/output"/>
+        <TextView
+            android:id="@+id/tvCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo: ccarracosiccha@gmail.com"
+            android:fontFamily="@font/poppins_light"
+            style="@style/output"/>
+        <TextView
+            android:id="@+id/tvClave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clave: 123a"
+            android:fontFamily="@font/poppins_light"
+            style="@style/output"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

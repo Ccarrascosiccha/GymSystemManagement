@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".RegistroActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registro de nuevo usuario"
+                android:layout_marginTop="16dp"
+                style="@style/titulo"/>
+
+            <!-- DNI -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="DNI"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                app:counterMaxLength="8"
+                app:counterEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietDni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    style="@style/input"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Apellidos en dos columnas -->
+            <LinearLayout
+                android:id="@+id/llayApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilApellidoPaterno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Apellido paterno"
+                    android:inputType="textCapWords"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tietApellidoPaterno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:inputType="textCapWords"
+                        android:nextFocusDown="@id/tietApellidoMaterno"
+                        style="@style/input"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilApellidoMaterno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Apellido materno"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tietApellidoMaterno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:inputType="textCapWords"
+                        style="@style/input"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Nombres -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombres"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietNombres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="textCapWords"
+                    style="@style/input"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Celular -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCelular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Celular"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                app:counterMaxLength="9"
+                app:counterEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietCelular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="phone"
+                    android:maxLength="9"
+                    style="@style/input"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Sexo -->
+            <TextView
+                android:id="@+id/tvSexo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sexo:"
+                android:paddingHorizontal="8dp"
+                android:layout_marginHorizontal="16dp"
+                style="@style/output"/>
+
+            <RadioGroup
+                android:id="@+id/rgSexo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbtMasculino"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Masculino"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    app:buttonTint="@color/checkbox"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbtFemenino"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Femenino"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    app:buttonTint="@color/checkbox"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbNinguno"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Prefiero no decirlo"
+                    android:checked="true"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    app:buttonTint="@color/checkbox"/>
+            </RadioGroup>
+
+            <!-- Correo (con sufijo) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                app:suffixTextAppearance="@style/input"
+                app:suffixText="\@cibertec.edu.pe">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    style="@style/input"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Rol (dropdown) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                app:endIconMode="dropdown_menu">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actRol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rol"
+                    android:inputType="none"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Contenedor de contraseña: visible solo para Empleado/Admin -->
+            <LinearLayout
+                android:id="@+id/containerPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilClave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/plomo">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tietClave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:inputType="textPassword"
+                        style="@style/input"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilClaveConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirmar contraseña"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/plomo">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tietClaveConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:inputType="textPassword"
+                        style="@style/input"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="24dp"
+                android:weightSum="2"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Guardar datos"
+                    style="@style/boton"/>
+
+                <Button
+                    android:id="@+id/btnVerUsuarios"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="Ver Usuarios"
+                    style="@style/boton"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
