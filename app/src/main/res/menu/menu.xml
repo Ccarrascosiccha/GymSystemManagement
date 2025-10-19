@@ -15,15 +15,9 @@
             android:title=""
             android:icon="@drawable/ic_dashboard"/>
         <item
-            android:id="@+id/ieqwe"
+            android:id="@+id/itOpciones"
             android:title=""
-            android:icon="@drawable/ic_dashboard"/>
-        <item
-            android:id="@+id/qwe"
-            android:title=""
-            android:icon="@drawable/ic_dashboard"/>
-
-
+            android:icon="@drawable/ic_options"/>
     </group>
 
 </menu>

@@ -1,7 +1,8 @@
-package com.example.gymsystemmanagement
+package com.example.gymsystemmanagement.ui
 
 import android.content.ContentValues
 import android.content.Intent
+import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -14,6 +15,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
 import com.google.android.material.textfield.TextInputEditText
@@ -55,7 +57,7 @@ class RegistroActivity: AppCompatActivity() {
         tietApellidoMaterno =findViewById(R.id.tietApellidoMaterno)
         tietNombres =findViewById(R.id.tietNombres)
         tietCelular=findViewById(R.id.tietCelular)
-        tietDireccion=findViewById(R.id.tietDireccion)
+        tietDireccion = findViewById(R.id.tietDireccion)
         tietCorreo=findViewById(R.id.tietCorreo)
         tietClave=findViewById(R.id.tietClave)
         rbtMasculino =findViewById(R.id.rbtMasculino)
@@ -210,7 +212,7 @@ class RegistroActivity: AppCompatActivity() {
                     db.setTransactionSuccessful()
                     Toast.makeText(this, "Usuario guardado (ID = $id)", Toast.LENGTH_SHORT).show()
                     limpiarFormulario()
-                } catch (e: android.database.sqlite.SQLiteConstraintException) {
+                } catch (e: SQLiteConstraintException) {
                     Toast.makeText(this, "DNI o correo ya registrado", Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()

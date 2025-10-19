@@ -1,4 +1,4 @@
-package com.example.gymsystemmanagement
+package com.example.gymsystemmanagement.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.adapter.UsuarioAdapter
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,6 +29,19 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
+
+        val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        bottom.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.itInicio -> { /* ya estás aquí o navega a Home */ true }
+                R.id.itOpciones -> {
+                    startActivity(Intent(this, OpcionesActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

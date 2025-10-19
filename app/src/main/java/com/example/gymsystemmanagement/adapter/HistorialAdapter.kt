@@ -24,11 +24,11 @@ class HistorialAdapter(private val listaHistorial: List<Usuario>) : RecyclerView
     ) {
         val Usuario = listaHistorial[position]
         holder.tvCodigo.text = Usuario.id.toString()
-        holder.tvNombre.text = "${Usuario.nombres} ${Usuario.apellidoMaterno}"
+        holder.tvNomCompleto.text = "${Usuario.nombres} ${Usuario.apellidoMaterno}"
         holder.tvCelular.text= Usuario.celular.toString()
-        holder.tvSexo.text= Usuario.sexo.toString()
-        holder.tvCorreo.text=Usuario.correo
-        holder.tvClave.text=Usuario.clave
+        holder.tvFechaRegistro.text= Usuario.fechaRegistro.toString()
+        holder.tvRol.text=Usuario.rol
+        holder.tvEstado.text=Usuario.estado
     }
 
     override fun getItemCount(): Int {
@@ -37,10 +37,10 @@ class HistorialAdapter(private val listaHistorial: List<Usuario>) : RecyclerView
 
     inner class HistorialViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvCodigo : TextView=itemView.findViewById(R.id.tvCodigo)
-        var tvNombre : TextView=itemView.findViewById(R.id.tvNombre)
+        var tvNomCompleto : TextView=itemView.findViewById(R.id.tvNombreCompleto)
         var tvCelular : TextView=itemView.findViewById(R.id.tvCelular)
-        var tvSexo : TextView=itemView.findViewById(R.id.tvSexo)
-        var tvCorreo : TextView=itemView.findViewById(R.id.tvCorreo)
-        var tvClave : TextView=itemView.findViewById(R.id.tvClave)
+        var tvFechaRegistro : TextView=itemView.findViewById(R.id.tvFechaRegistro)
+        var tvRol : TextView=itemView.findViewById(R.id.tvRol)
+        var tvEstado : TextView=itemView.findViewById(R.id.tvEstado)
     }
 }

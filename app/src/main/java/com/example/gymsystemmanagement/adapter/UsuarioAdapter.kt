@@ -22,7 +22,7 @@ class UsuarioAdapter(private val usuario: List<Usuario>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val usuario=usuario[position]
         holder.tvName.text=usuario.nombres
-        holder.imgAvatar.setImageResource(R.drawable.ic_users)
+        holder.imgAvatar.setImageResource(R.drawable.icperfil)
         holder.itemView.setOnClickListener {
             onItemClickListener?.invoke(usuario)
         }

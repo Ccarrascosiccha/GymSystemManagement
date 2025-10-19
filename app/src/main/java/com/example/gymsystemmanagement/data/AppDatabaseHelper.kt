@@ -26,7 +26,7 @@ class AppDatabaseHelper(context: Context) :
                 fechaRegistro TEXT DEFAULT (datetime('now')),
                 rol TEXT CHECK (rol IN ('Admin','Empleado','Miembro')) DEFAULT 'Miembro',
                 clave TEXT,
-                estado TEXT CHECK (estado IN ('Activo','Inactivo')) DEFAULT 'Activo'
+                    estado TEXT CHECK (estado IN ('Activo','Inactivo')) DEFAULT 'Activo'
             );
         """)
         db.execSQL("""

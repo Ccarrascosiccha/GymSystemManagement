@@ -1,4 +1,4 @@
-package com.example.gymsystemmanagement
+package com.example.gymsystemmanagement.ui
 
 import android.Manifest
 import android.content.Intent
@@ -15,6 +15,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.gymsystemmanagement.ui.DashboardActivity
+import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.entity.Usuario
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -30,9 +32,11 @@ class AccesoActivity : AppCompatActivity() {
     private lateinit var ivLanguage : ImageView
     private lateinit var ivWeb : ImageView
     private val listaUsuarios = mutableListOf(
-        Usuario(1, 123456789, "Carrasco", "Siccga",
-                "Carlos Daniel","999999999","M","test@gmail.com",
-                "av ancon 1240","12/12/2023","Miembro","123","Activo"),
+        Usuario(
+            1, 123456789, "Carrasco", "Siccga",
+            "Carlos Daniel", "999999999", "M", "test@gmail.com",
+            "av ancon 1240", "12/12/2023", "Miembro", "123", "Activo"
+        ),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,7 +103,7 @@ class AccesoActivity : AppCompatActivity() {
             tilPass.error=""
         }
         if (!error) {
-            var usuario : Usuario ?= null
+            var usuario : Usuario?= null
             for (u in listaUsuarios) {
                 if (u.correo == (correo) && u.clave == clave) {
                     usuario = u
@@ -109,7 +113,7 @@ class AccesoActivity : AppCompatActivity() {
                 startActivity(Intent(this, DashboardActivity::class.java))
                 Toast.makeText(this,"Bienvenido"+ usuario.nombres, Toast.LENGTH_SHORT).show()
             }else {
-                Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
             }
         }
     }

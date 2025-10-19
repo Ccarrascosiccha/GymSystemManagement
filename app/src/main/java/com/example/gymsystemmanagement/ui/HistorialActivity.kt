@@ -1,4 +1,4 @@
-package com.example.gymsystemmanagement
+package com.example.gymsystemmanagement.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.adapter.HistorialAdapter
 import com.example.gymsystemmanagement.entity.Usuario
 
