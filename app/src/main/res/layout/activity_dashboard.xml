@@ -10,16 +10,19 @@
     tools:context=".ui.DashboardActivity">
 
     <ScrollView
+        android:id="@+id/scrollDashboard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="16dp"
-        android:layout_marginBottom="72dp"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
 
-        <LinearLayout
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -107,14 +110,16 @@
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fabAnhiadir"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_add"
-                    android:scaleType="centerInside"
-                    app:maxImageSize="40dp"
-                    app:tint="@android:color/white"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/ic_add_db"
+                    app:useCompatPadding="true"
+                    android:scaleType="center"
+                    app:tint="@color/black"
                     app:backgroundTint="#797A7A"
-                    android:contentDescription="Añadir nuevo miembro"/>
+                    app:borderWidth="0dp"
+                    app:maxImageSize="32dp"/>
+
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -171,8 +176,14 @@
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         app:menu="@menu/menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="0dp"
+        android:fitsSystemWindows="true"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

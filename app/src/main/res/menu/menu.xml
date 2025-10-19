@@ -8,16 +8,16 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/itInicio"
-            android:title=""
+            android:title="Dashboard"
             android:icon="@drawable/ic_dashboard"/>
         <item
             android:id="@+id/itOpciones"
-            android:title=""
+            android:title="Opciones"
             android:icon="@drawable/ic_options"/>
         <item
             android:id="@+id/itasd"
-            android:title=""
-            android:icon="@drawable/ic_dashboard"/>
+            android:title="Configuración"
+            android:icon="@drawable/ic_settings_db"/>
     </group>
 
 </menu>
