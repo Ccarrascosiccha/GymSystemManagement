@@ -29,12 +29,12 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
-
+        cargarMiembrosDesdeSQLite()
         val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
 
         bottom.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.itInicio -> { /* ya estás aquí o navega a Home */ true }
+                R.id.itInicio -> { true }
                 R.id.itOpciones -> {
                     startActivity(Intent(this, OpcionesActivity::class.java))
                     true
