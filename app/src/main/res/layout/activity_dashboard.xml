@@ -96,7 +96,7 @@
                     android:textColor="#3C3C3C"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabAddMember"
+                    android:id="@+id/fabAnhiadir"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@drawable/ic_add"
@@ -137,7 +137,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
-                <!-- Chip "See all" -->
                 <TextView
                     android:id="@+id/btnSeeAll"
                     android:layout_width="wrap_content"
@@ -151,13 +150,11 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTransactions"
+                android:id="@+id/rvOperaiones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"/>
-
-
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNav"

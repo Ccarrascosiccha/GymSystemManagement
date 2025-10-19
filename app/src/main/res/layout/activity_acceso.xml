@@ -55,8 +55,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Correo"
                 android:layout_marginTop="16dp"
-                app:suffixTextAppearance="@style/input"
-                app:suffixText="\@gmail.com">
+                app:suffixTextAppearance="@style/input">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietCorreo"
@@ -71,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
+                app:passwordToggleEnabled="true"
                 android:layout_marginTop="16dp"
                 app:suffixTextAppearance="@style/input">
 
@@ -79,6 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    app:passwordToggleEnabled="true"
                     android:inputType="textPassword"
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>

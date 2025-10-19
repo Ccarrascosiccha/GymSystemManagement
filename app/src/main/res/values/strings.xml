@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GymSystemManagement</string>
+    <string-array name="roles">
+        <item>Miembro</item>
+        <item>Empleado</item>
+        <item>Admin</item>
+    </string-array>
+
 </resources>

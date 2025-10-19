@@ -39,8 +39,8 @@ class HistorialActivity: AppCompatActivity() {
 
         if (usuarios.isEmpty()) {
             usuarios += listOf(
-                Usuario(1, 123456789, "Carrasco", "Siccha", "Carlos Daniel", 999999999, 'M', "prueba@gmail.com", "123a"),
-                Usuario(2, 123456789, "Carrasco", "Siccha", "Carlos Daniel", 999999999, 'M', "prueba@gmail.com", "123a")
+                Usuario(1, 123456789, "Carrasco", "Siccha", "Carlos Daniel", "999999999", "M", "prueba@gmail.com", "123a"),
+                Usuario(2, 123456789, "Carrasco", "Siccha", "Carlos Daniel", "999999999", "M", "prueba@gmail.com", "123a")
             )
         }
         historialAdapter = HistorialAdapter(usuarios)

@@ -70,7 +70,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Apellido paterno"
-                    android:inputType="textCapWords"
+                    android:inputType="textPersonName"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp">
 
@@ -79,7 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:inputType="textCapWords"
+                        android:inputType="textPersonName"
                         android:nextFocusDown="@id/tietApellidoMaterno"
                         style="@style/input"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -89,6 +89,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Apellido materno"
+                    android:inputType="textPersonName"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp">
 
@@ -97,7 +98,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:inputType="textCapWords"
+                        android:inputType="textPersonName"
                         style="@style/input"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -108,6 +109,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombres"
+
+                android:inputType="textPersonName"
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="16dp">
 
@@ -116,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:inputType="textCapWords"
+                    android:inputType="textPersonName"
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,6 +141,23 @@
                     android:singleLine="true"
                     android:inputType="phone"
                     android:maxLength="9"
+                    style="@style/input"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Dirección -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Dirección"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="textPostalAddress"
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
 

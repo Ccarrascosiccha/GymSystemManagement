@@ -23,7 +23,7 @@ class HistorialAdapter(private val listaHistorial: List<Usuario>) : RecyclerView
         position: Int
     ) {
         val Usuario = listaHistorial[position]
-        holder.tvCodigo.text = Usuario.codigo.toString()
+        holder.tvCodigo.text = Usuario.id.toString()
         holder.tvNombre.text = "${Usuario.nombres} ${Usuario.apellidoMaterno}"
         holder.tvCelular.text= Usuario.celular.toString()
         holder.tvSexo.text= Usuario.sexo.toString()

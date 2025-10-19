@@ -30,11 +30,9 @@ class AccesoActivity : AppCompatActivity() {
     private lateinit var ivLanguage : ImageView
     private lateinit var ivWeb : ImageView
     private val listaUsuarios = mutableListOf(
-        Usuario(1, 123456789, "Carrasco", "Siccga", "Carlos Daniel",999999999,'M',"test@gmail.com","123a"),
-        Usuario(2, 123456789, "Carrasco", "Siccga", "Carlos Daniel",999999999,'M',"prueba@gmail.com","123a"),
-        Usuario(3, 123456789, "Carrasco", "Siccga", "Carlos Daniel",999999999,'M',"prueba@gmail.com","123a"),
-        Usuario(4, 123456789, "Carrasco", "Siccga", "Carlos Daniel",999999999,'M',"prueba@gmail.com","123a"),
-        Usuario(5, 123456789, "Carrasco", "Siccga", "Carlos Daniel",999999999,'M',"prueba@gmail.com","123a"),
+        Usuario(1, 123456789, "Carrasco", "Siccga",
+                "Carlos Daniel","999999999","M","test@gmail.com",
+                "av ancon 1240","12/12/2023","Miembro","123","Activo"),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,7 +101,7 @@ class AccesoActivity : AppCompatActivity() {
         if (!error) {
             var usuario : Usuario ?= null
             for (u in listaUsuarios) {
-                if (u.correo == ("$correo@gmail.com") && u.clave == clave) {
+                if (u.correo == (correo) && u.clave == clave) {
                     usuario = u
                 }
             }

@@ -6,49 +6,90 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gymsystemmanagement.adapter.MiembrosAdapter
+import com.example.gymsystemmanagement.adapter.UsuarioAdapter
+import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DashboardActivity : AppCompatActivity() {
 
-    private lateinit var rvMembers: RecyclerView
-    private lateinit var fabAddMember: FloatingActionButton
+    private lateinit var rvMiembros: RecyclerView
+    private lateinit var fabAnhiadir: FloatingActionButton
+    private lateinit var usuarioAdapter: UsuarioAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
 
-        // Ajuste para que no se superponga con la barra de estado o navegación
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        fabAddMember = findViewById(R.id.fabAddMember)
-        // Inicialización del RecyclerView de "Latest Members"
-        rvMembers = findViewById(R.id.rvMiembros)
-        rvMembers.setHasFixedSize(true)
-        rvMembers.layoutManager =
+        rvMiembros = findViewById(R.id.rvMiembros)
+        fabAnhiadir = findViewById(R.id.fabAnhiadir)
+
+        rvMiembros.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        // Datos simulados (podrás reemplazarlos con los que vengan de tu BD)
-        val usuarios = listOf(
-            Usuario(1, 12345678, "Carrasco", "Siccha", "Carlos Daniel", 999999999, 'M', "carlos@gmail.com", "123a"),
-            Usuario(2, 87654321, "Ramírez", "Torres", "Lucía", 988888888, 'F', "lucia@gmail.com", "123a"),
-            Usuario(3, 11223344, "Gonzales", "Pérez", "Jorge", 977777777, 'M', "jorge@gmail.com", "123a"),
-            Usuario(4, 99887766, "Lopez", "Vega", "María", 966666666, 'F', "maria@gmail.com", "123a")
-        )
+        cargarMiembrosDesdeSQLite()
 
-        // Asignación del adapter
-        rvMembers.adapter = MiembrosAdapter(usuarios)
-
-        fabAddMember.setOnClickListener {
+        fabAnhiadir.setOnClickListener {
             startActivity(Intent(this, RegistroActivity::class.java))
+        }
+    }
+
+    private fun cargarMiembrosDesdeSQLite() {
+        lifecycleScope.launch {
+            val usuarios = withContext(Dispatchers.IO) {
+                val dbHelper = AppDatabaseHelper(this@DashboardActivity)
+                val db = dbHelper.readableDatabase
+                val lista = mutableListOf<Usuario>()
+
+                val cursor = db.rawQuery(
+                    """
+                    SELECT id, dni, apellidoPaterno, apellidoMaterno, nombres, celular, sexo, correo, clave
+                    FROM Usuario
+                    WHERE estado='Activo'
+                    ORDER BY datetime(fechaRegistro) DESC
+                    LIMIT 10
+                    """, null
+                )
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        lista.add(
+                            Usuario(
+                                id = cursor.getInt(0),
+                                dni = cursor.getInt(1),
+                                apellidoPaterno = cursor.getString(2),
+                                apellidoMaterno = cursor.getString(3),
+                                nombres = cursor.getString(4),
+                                celular = cursor.getString(5),
+                                sexo = cursor.getString(6),
+                                correo = cursor.getString(7),
+                                clave = cursor.getString(8)
+                            )
+                        )
+                    } while (cursor.moveToNext())
+                }
+                cursor.close()
+                db.close()
+                lista
+            }
+
+            // Crear e asignar el adapter con la lista de usuarios
+            usuarioAdapter = UsuarioAdapter(usuarios)
+            rvMiembros.adapter = usuarioAdapter
+            usuarioAdapter.notifyDataSetChanged()
         }
     }
 }
