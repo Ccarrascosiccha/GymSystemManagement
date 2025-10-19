@@ -15,18 +15,18 @@ import com.example.gymsystemmanagement.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OpcionesActivity : AppCompatActivity() {
-    private lateinit var dlayMenu : DrawerLayout
-    private lateinit var nvMenu : NavigationView
-    private lateinit var ivMenu : ImageView
-
-
+        private lateinit var ln_verUsuarios: LinearLayout
+        private lateinit var ln_registrarUsuarios: LinearLayout
+        private lateinit var ln_registrarPlan: LinearLayout
+        private lateinit var ln_verPlanes: LinearLayout
+        private lateinit var subMenuUsuario: LinearLayout
+        private lateinit var btnMembers: LinearLayout
         private lateinit var ivChevron: ImageView
-        private lateinit var subMenu: LinearLayout
-        private var isExpanded = false
-
-
-
-
+    private lateinit var btnPlanesMembresia: LinearLayout
+    private lateinit var subMenuPlanes: LinearLayout
+    private lateinit var ivChevronPlanes: ImageView
+    private var isExpandedPlanes = false
+    private var isExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +44,33 @@ class OpcionesActivity : AppCompatActivity() {
             )
             insets
         }
+        ln_registrarPlan=findViewById(R.id.ln_registrarPlan)
+        ln_verPlanes=findViewById(R.id.ln_verPlanes)
+        btnPlanesMembresia = findViewById(R.id.btnPlanesMembresia)
+        subMenuPlanes = findViewById(R.id.subMenuPlanes)
         ivChevron = findViewById(R.id.ivChevron)
-        subMenu = findViewById(R.id.subMenu)
+        ivChevronPlanes = findViewById(R.id.ivChevronPlanes)
+        btnMembers = findViewById(R.id.btnMembers)
+        subMenuUsuario = findViewById(R.id.subMenu)
+        ln_verUsuarios=findViewById(R.id.ln_verUsuarios)
+        ln_registrarUsuarios=findViewById(R.id.ln_registrarUsuarios)
+
+        ln_registrarUsuarios.setOnClickListener {
+            startActivity(Intent(this, RegistroActivity::class.java))
+        }
+        ln_verUsuarios.setOnClickListener {
+            startActivity(Intent(this, HistorialActivity::class.java))
+        }
+
+//        lnRegistrarPlan.setOnClickListener {
+//            startActivity(Intent(this, RegistrarPlanActivity::class.java))
+//        }
+//
+//        lnVerPlanes.setOnClickListener {
+//            startActivity(Intent(this, ListaPlanesActivity::class.java))
+//        }
+
+
         val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
 
         // Marca "Opciones" como seleccionado cuando estás en esta pantalla
@@ -54,41 +79,50 @@ class OpcionesActivity : AppCompatActivity() {
         bottom.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.itInicio -> {
-                    // Ir al Dashboard
                     startActivity(
                         Intent(this, DashboardActivity::class.java).apply {
                             // evita duplicar la activity en el back stack
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
                         }
                     )
-                    finish() // cierra Opciones para no apilar
+                    finish()
                     true
                 }
-                R.id.itOpciones -> true   // ya estás aquí
+                R.id.itOpciones -> true
                 R.id.itasd -> {
-                    // Ejemplo de otro destino si lo usas
-                    // startActivity(Intent(this, MembersActivity::class.java))
                     true
                 }
                 else -> false
             }
         }
+
+        fun toggleMenuPlanes() {
+            isExpandedPlanes = !isExpandedPlanes
+            if (isExpandedPlanes) {
+                subMenuPlanes.visibility = View.VISIBLE
+                ivChevronPlanes.animate().rotation(180f).setDuration(200).start()
+            } else {
+                subMenuPlanes.visibility = View.GONE
+                ivChevronPlanes.animate().rotation(0f).setDuration(200).start()
+            }
+        }
+
         fun toggleMenu() {
             isExpanded = !isExpanded
-
             if (isExpanded) {
-                // Animar expansión
-                subMenu.visibility = View.VISIBLE
+                subMenuUsuario.visibility = View.VISIBLE
                 ivChevron.animate().rotation(180f).setDuration(200).start()
             } else {
                 // Animar colapso
-                subMenu.visibility = View.GONE
+                subMenuUsuario.visibility = View.GONE
                 ivChevron.animate().rotation(0f).setDuration(200).start()
             }
         }
-        ivChevron.setOnClickListener {
+        btnMembers.setOnClickListener {
             toggleMenu()
         }
-
+        btnPlanesMembresia.setOnClickListener {
+            toggleMenuPlanes()
+        }
     }
 }

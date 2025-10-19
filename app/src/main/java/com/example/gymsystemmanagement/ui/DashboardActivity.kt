@@ -71,7 +71,7 @@ class DashboardActivity : AppCompatActivity() {
 
                 val cursor = db.rawQuery(
                     """
-                    SELECT id, dni, apellidoPaterno, apellidoMaterno, nombres, celular, sexo, correo, clave
+                    SELECT id, dni, apellidoPaterno, apellidoMaterno, nombres, celular, sexo, correo,direccion,fechaRegistro,rol,clave,estado
                     FROM Usuario
                     WHERE estado='Activo'
                     ORDER BY datetime(fechaRegistro) DESC
@@ -91,7 +91,11 @@ class DashboardActivity : AppCompatActivity() {
                                 celular = cursor.getString(5),
                                 sexo = cursor.getString(6),
                                 correo = cursor.getString(7),
-                                clave = cursor.getString(8)
+                                direccion = cursor.getString(8),
+                                fechaRegistro = cursor.getString(9),
+                                rol = cursor.getString(10),
+                                clave = cursor.getString(11),
+                                estado = cursor.getString(12)
                             )
                         )
                     } while (cursor.moveToNext())
@@ -100,8 +104,6 @@ class DashboardActivity : AppCompatActivity() {
                 db.close()
                 lista
             }
-
-            // Crear e asignar el adapter con la lista de usuarios
             usuarioAdapter = UsuarioAdapter(usuarios)
             rvMiembros.adapter = usuarioAdapter
             usuarioAdapter.notifyDataSetChanged()

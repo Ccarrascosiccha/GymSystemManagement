@@ -11,13 +11,13 @@
             android:title=""
             android:icon="@drawable/ic_dashboard"/>
         <item
-            android:id="@+id/itasd"
-            android:title=""
-            android:icon="@drawable/ic_dashboard"/>
-        <item
             android:id="@+id/itOpciones"
             android:title=""
             android:icon="@drawable/ic_options"/>
+        <item
+            android:id="@+id/itasd"
+            android:title=""
+            android:icon="@drawable/ic_dashboard"/>
     </group>
 
 </menu>

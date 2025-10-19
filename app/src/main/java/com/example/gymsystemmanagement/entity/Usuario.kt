@@ -9,7 +9,7 @@ data class Usuario(
     var apellidoMaterno: String = "",
     var nombres: String = "",
     var celular: String = "",
-    var sexo: String = "",
+    var sexo: String?  = "",
     var correo: String = "",
     var direccion: String = "",
     var fechaRegistro: String = "",

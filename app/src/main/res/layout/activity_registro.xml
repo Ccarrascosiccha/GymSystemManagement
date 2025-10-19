@@ -35,7 +35,6 @@
                 android:layout_marginTop="16dp"
                 style="@style/titulo"/>
 
-            <!-- DNI -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilDni"
                 android:layout_width="match_parent"
@@ -56,7 +55,6 @@
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Apellidos en dos columnas -->
             <LinearLayout
                 android:id="@+id/llayApellidos"
                 android:layout_width="match_parent"
@@ -70,7 +68,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Apellido paterno"
-                    android:inputType="textPersonName"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp">
 
@@ -79,7 +76,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:inputType="textPersonName"
+                        android:inputType="textCapWords|textPersonName"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ "
                         android:nextFocusDown="@id/tietApellidoMaterno"
                         style="@style/input"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +87,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Apellido materno"
-                    android:inputType="textPersonName"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp">
 
@@ -98,19 +95,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:inputType="textPersonName"
+                        android:inputType="textCapWords|textPersonName"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ "
                         style="@style/input"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <!-- Nombres -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilNombres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombres"
-
-                android:inputType="textPersonName"
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="16dp">
 
@@ -119,11 +114,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapWords|textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ "
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Celular -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCelular"
                 android:layout_width="match_parent"
@@ -143,7 +138,7 @@
                     android:maxLength="9"
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <!-- Dirección -->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilDireccion"
                 android:layout_width="match_parent"
@@ -161,7 +156,6 @@
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Sexo -->
             <TextView
                 android:id="@+id/tvSexo"
                 android:layout_width="match_parent"
@@ -196,18 +190,9 @@
                     android:padding="8dp"
                     app:buttonTint="@color/checkbox"/>
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rbNinguno"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="Prefiero no decirlo"
-                    android:checked="true"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    app:buttonTint="@color/checkbox"/>
+
             </RadioGroup>
 
-            <!-- Correo (con sufijo) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCorreo"
                 android:layout_width="match_parent"
@@ -215,8 +200,7 @@
                 android:hint="Correo"
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="16dp"
-                app:suffixTextAppearance="@style/input"
-                app:suffixText="\@cibertec.edu.pe">
+                app:suffixTextAppearance="@style/input">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietCorreo"
@@ -227,7 +211,6 @@
                     style="@style/input"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Rol (dropdown) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilRol"
                 android:layout_width="match_parent"
@@ -240,11 +223,10 @@
                     android:id="@+id/actRol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Rol"
+                    android:hint="Seleccione un rol"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Contenedor de contraseña: visible solo para Empleado/Admin -->
             <LinearLayout
                 android:id="@+id/containerPassword"
                 android:layout_width="match_parent"
@@ -289,7 +271,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <!-- Botones -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

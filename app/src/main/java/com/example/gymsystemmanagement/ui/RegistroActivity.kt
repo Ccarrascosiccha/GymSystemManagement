@@ -62,7 +62,6 @@ class RegistroActivity: AppCompatActivity() {
         tietClave=findViewById(R.id.tietClave)
         rbtMasculino =findViewById(R.id.rbtMasculino)
         rbtFemenino =findViewById(R.id.rbtFemenino)
-        rbNinguno =findViewById(R.id.rbNinguno)
         tietClaveConfirm=findViewById(R.id.tietClaveConfirm)
         tilDni             = findViewById(R.id.tilDni)
         tilApellidoPaterno = findViewById(R.id.tilApellidoPaterno)
@@ -181,12 +180,6 @@ class RegistroActivity: AppCompatActivity() {
 
                 try {
                     db.beginTransaction()
-                    val sexo: String? = when {
-                        rbtMasculino.isChecked -> "M"
-                        rbtFemenino.isChecked  -> "F"
-                        else                   -> null
-                    }
-
                     val correo = "${tietCorreo.text.toString().trim()}@cibertec.edu.pe"
                     val values = ContentValues().apply {
                         put("dni", tietDni.text.toString().toIntOrNull() ?: run {
@@ -199,7 +192,7 @@ class RegistroActivity: AppCompatActivity() {
                         put("celular",          tietCelular.text.toString())
                         put("direccion",        tietDireccion.text.toString())
                         put("correo",           correo)
-                        if (sexo == null) putNull("sexo") else put("sexo", sexo)
+                        put("sexo", if (rbtMasculino.isChecked) "M" else if (rbtFemenino.isChecked) "F" else "N")
                         put("rol",    actRol.text.toString())
                         put("estado", "Activo")
                         put("clave",  tietClave.text.toString())

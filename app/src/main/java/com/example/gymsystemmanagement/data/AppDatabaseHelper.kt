@@ -20,7 +20,7 @@ class AppDatabaseHelper(context: Context) :
                 apellidoMaterno TEXT NOT NULL,
                 nombres TEXT NOT NULL,
                 celular TEXT,
-                sexo TEXT CHECK (sexo IN ('M','F')),
+                sexo TEXT  ,
                 correo TEXT UNIQUE,
                 direccion TEXT,
                 fechaRegistro TEXT DEFAULT (datetime('now')),
