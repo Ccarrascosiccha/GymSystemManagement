@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gymsystemmanagement.ui.DashboardActivity
 import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.entity.Usuario
 import com.google.android.material.textfield.TextInputEditText
@@ -28,9 +27,6 @@ class AccesoActivity : AppCompatActivity() {
     private lateinit var tilCorreo : TextInputLayout
     private lateinit var tilPass : TextInputLayout
     private lateinit var btnAcceso: Button
-    private  lateinit var  ivLlamada: ImageView
-    private lateinit var ivLanguage : ImageView
-    private lateinit var ivWeb : ImageView
     private val listaUsuarios = mutableListOf(
         Usuario(
             1, 123456789, "Carrasco", "Siccga",
@@ -49,29 +45,11 @@ class AccesoActivity : AppCompatActivity() {
         tietPass = findViewById(R.id.tietPass)
         tilCorreo = findViewById(R.id.tilCorreo)
         tilPass = findViewById(R.id.tilPass)
-        ivLlamada = findViewById(R.id.ivLlamada)
-        ivLanguage = findViewById(R.id.ivLanguage)
-        ivWeb=findViewById(R.id.ivWeb)
         btnAcceso = findViewById(R.id.btnAcceso)
 
 
         btnAcceso.setOnClickListener {
         validarCampos()
-        }
-        ivLlamada.setOnClickListener {
-            if(ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
-                != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CALL_PHONE), 1)
-            }else{
-                val intent = Intent(Intent.ACTION_CALL)
-                intent.data = "tel:+51974144528".toUri()
-                startActivity(intent)
-            }
-        }
-        ivWeb.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.setData("https://google.com".toUri())
-            startActivity(intent)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -110,7 +88,7 @@ class AccesoActivity : AppCompatActivity() {
                 }
             }
             if (usuario !=null){
-                startActivity(Intent(this, DashboardActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                 Toast.makeText(this,"Bienvenido"+ usuario.nombres, Toast.LENGTH_SHORT).show()
             }else {
                 Toast.makeText(this,"Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()

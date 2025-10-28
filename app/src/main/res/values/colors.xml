@@ -39,6 +39,7 @@
     <color name="turquesa">#589FFF</color>
     <color name="verde1">#83D689</color>
     <color name="verde2">#B5F4B8</color>
+    <color name="dialog_editar">#2337BA</color>
 <!--    boton inicio-->
     <!-- Colores base -->
     <color name="blanco">#FFFFFFFF</color>
@@ -51,4 +52,7 @@
     <!-- Colores de acento (opcional, para destacar botones) -->
     <color name="acento">#FF00BCD4</color> <!-- turquesa minimalista -->
     <color name="acento_rojo">#FFE53935</color> <!-- rojo moderno para alertas -->
+    <color name="green">#195F1D</color>
+    <color name="red">#F44336</color>
+
 </resources>

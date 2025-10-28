@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/fragment_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.DashboardActivity">
+    android:background="@color/white">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollDashboard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:padding="16dp"
         android:clipToPadding="false"
-        android:fitsSystemWindows="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+        android:fitsSystemWindows="false">
 
-
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
+            <!-- Título -->
             <TextView
                 android:id="@+id/tvTitulo"
                 android:textColor="@color/black"
@@ -37,16 +31,16 @@
                 android:textStyle="bold"
                 android:text="DASHBOARD"
                 android:layout_marginTop="30dp"
-                android:textSize="24sp"
-                style="@style/titulo"/>
+                android:textSize="24sp" />
+
             <View
                 android:layout_width="120dp"
                 android:layout_height="3dp"
                 android:layout_marginTop="4dp"
                 android:background="@color/black"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal" />
 
-
+            <!-- Cuadros principales -->
             <GridLayout
                 android:id="@+id/gridContainer"
                 android:layout_width="match_parent"
@@ -54,9 +48,6 @@
                 android:layout_marginTop="16dp"
                 android:columnCount="2"
                 android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false"
-                android:rowCount="2"
-                android:rowOrderPreserved="true"
                 android:useDefaultMargins="true"
                 android:gravity="center">
 
@@ -65,32 +56,35 @@
                     android:id="@+id/card_earnings"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"/>
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1" />
 
                 <include
                     layout="@layout/item_dashboard_members"
                     android:id="@+id/card_members"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"/>
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1" />
 
                 <include
                     layout="@layout/item_dashboard_joined"
                     android:id="@+id/card_joined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"/>
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1" />
 
                 <include
                     layout="@layout/item_dashboard_time"
                     android:id="@+id/card_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"/>
-
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1" />
             </GridLayout>
 
-
+            <!-- Últimos miembros -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +100,7 @@
                     android:text="Últimos miembros"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#3C3C3C"/>
+                    android:textColor="#3C3C3C" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fabAnhiadir"
@@ -115,11 +109,9 @@
                     android:src="@drawable/ic_add_db"
                     app:useCompatPadding="true"
                     android:scaleType="center"
-                    app:tint="@color/black"
-                    app:backgroundTint="#797A7A"
+                    app:tint="@color/white"
                     app:borderWidth="0dp"
-                    app:maxImageSize="32dp"/>
-
+                    app:maxImageSize="32dp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -132,8 +124,9 @@
                 android:paddingEnd="4dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:orientation="horizontal"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="12dp" />
 
+            <!-- Operaciones -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,18 +142,17 @@
                     android:text="Operaciones"
                     android:textColor="#3C3C3C"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/btnSeeAll"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
-                    android:paddingLeft="14dp"
-                    android:paddingRight="14dp"
+                    android:paddingHorizontal="14dp"
                     android:gravity="center"
                     android:text="Ver todo"
                     android:textColor="@android:color/black"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -168,22 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"/>
+                android:overScrollMode="never" />
         </LinearLayout>
-    </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
-        app:menu="@menu/menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingBottom="0dp"
-        android:fitsSystemWindows="true"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

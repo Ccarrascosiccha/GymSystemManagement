@@ -1,11 +1,11 @@
-package com.example.gymsystemmanagement.ui
+package com.example.gymsystemmanagement.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,65 +13,65 @@ import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.adapter.UsuarioAdapter
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DashboardActivity : AppCompatActivity() {
-
+class InicioFragment : Fragment(R.layout.fragment_inicio){
     private lateinit var rvMiembros: RecyclerView
     private lateinit var fabAnhiadir: FloatingActionButton
     private lateinit var usuarioAdapter: UsuarioAdapter
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflar el layout del fragmento
+        return inflater.inflate(R.layout.fragment_inicio, container, false)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_dashboard)
-        cargarMiembrosDesdeSQLite()
-        val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        bottom.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.itInicio -> { true }
-                R.id.itOpciones -> {
-                    startActivity(Intent(this, OpcionesActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
+        // Referencias de vistas
+        rvMiembros = view.findViewById(R.id.rvMiembros)
+        fabAnhiadir = view.findViewById(R.id.fabAnhiadir)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        rvMiembros = findViewById(R.id.rvMiembros)
-        fabAnhiadir = findViewById(R.id.fabAnhiadir)
-
+        // Configuración del RecyclerView
         rvMiembros.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+        // Cargar datos desde SQLite
         cargarMiembrosDesdeSQLite()
 
+        // Acción del botón flotante
         fabAnhiadir.setOnClickListener {
-            startActivity(Intent(this, RegistroActivity::class.java))
+            parentFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_in_right,  // entrada del nuevo fragment
+                    R.anim.slide_out_left,  // salida del actual
+                    R.anim.slide_in_left,   // cuando vuelves atrás
+                    R.anim.slide_out_right  // al cerrar el fragment
+                )
+                .replace(R.id.fragmentContainer, RegistroUsuarioFragment())
+                .addToBackStack(null)
+                .commit()
+
         }
+
     }
 
     private fun cargarMiembrosDesdeSQLite() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             val usuarios = withContext(Dispatchers.IO) {
-                val dbHelper = AppDatabaseHelper(this@DashboardActivity)
+                val dbHelper = AppDatabaseHelper(requireContext())
                 val db = dbHelper.readableDatabase
                 val lista = mutableListOf<Usuario>()
 
                 val cursor = db.rawQuery(
                     """
-                    SELECT id, dni, apellidoPaterno, apellidoMaterno, nombres, celular, sexo, correo,direccion,fechaRegistro,rol,clave,estado
+                    SELECT id, dni, apellidoPaterno, apellidoMaterno, nombres, celular, sexo, correo, direccion, fechaRegistro, rol, clave, estado
                     FROM Usuario
                     WHERE estado='Activo'
                     ORDER BY datetime(fechaRegistro) DESC
@@ -100,10 +100,12 @@ class DashboardActivity : AppCompatActivity() {
                         )
                     } while (cursor.moveToNext())
                 }
+
                 cursor.close()
                 db.close()
                 lista
             }
+
             usuarioAdapter = UsuarioAdapter(usuarios)
             rvMiembros.adapter = usuarioAdapter
             usuarioAdapter.notifyDataSetChanged()

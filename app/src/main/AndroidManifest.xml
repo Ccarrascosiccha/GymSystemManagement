@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GymSystemManagement">
         <activity
-            android:name=".ui.AccesoActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,18 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.RegistroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.HistorialActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.DashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.OpcionesActivity"
+            android:name=".ui.AccesoActivity"
             android:exported="false" />
     </application>
-
-
 </manifest>
