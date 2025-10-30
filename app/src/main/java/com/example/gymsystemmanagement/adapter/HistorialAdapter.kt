@@ -1,5 +1,6 @@
 package com.example.gymsystemmanagement.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,7 @@ import com.google.android.material.card.MaterialCardView
 
 class HistorialAdapter(
     private val listaUsuarios: List<Usuario>,
-    private val onOpciones: (Usuario) -> Unit
-) : RecyclerView.Adapter<HistorialAdapter.ViewHolder>() {
+    private val onOpciones: (Usuario) -> Unit) : RecyclerView.Adapter<HistorialAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val card: MaterialCardView = view.findViewById(R.id.mainCard)
@@ -35,6 +35,7 @@ class HistorialAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val usuario = listaUsuarios[position]
+        Log.d("HistorialAdapter", "Fecha de usuario ${usuario.id}: '${usuario.fechaRegistro}'")
         holder.tvCodigo.text = "Código: ${usuario.id}"
         holder.tvNombreCompleto.text = "${usuario.nombres} ${usuario.apellidoPaterno} ${usuario.apellidoMaterno}"
         holder.tvCelular.text = "Celular: ${usuario.celular}"

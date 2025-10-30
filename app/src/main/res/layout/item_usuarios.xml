@@ -12,8 +12,8 @@
         android:layout_height="72dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_users"
-        app:shapeAppearanceOverlay="@style/CircleImage"
-        />
+        app:shapeAppearanceOverlay="@style/CircleImage"/>
+
 
     <!-- Nombre -->
     <TextView

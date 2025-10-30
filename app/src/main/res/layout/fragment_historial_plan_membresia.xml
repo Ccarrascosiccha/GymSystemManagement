@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/fondos"
     android:padding="16dp">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historial de Usuarios"
-        android:textAppearance="@style/titulo"
-        android:layout_marginTop="8dp" />
+        android:text="Historial de Planes de Membresía"
+        android:textAppearance="@style/Titulos"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHistorial"
+        android:id="@+id/rvPlanesMemb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp" />

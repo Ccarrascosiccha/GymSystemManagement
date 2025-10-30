@@ -4,31 +4,16 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
+import com.example.gymsystemmanagement.data.UsuarioDAO
 import com.example.gymsystemmanagement.entity.Usuario
 
 class UsuarioRepository(private val context: Context) {
 
     private val dbHelper = AppDatabaseHelper(context)
+    private val dao = UsuarioDAO(context)
 
-    // Insertar un nuevo usuario
-    fun insertar(usuario: Usuario): Long {
-        val db = dbHelper.writableDatabase
-        val values = ContentValues().apply {
-            put("dni", usuario.dni)
-            put("apellidoPaterno", usuario.apellidoPaterno)
-            put("apellidoMaterno", usuario.apellidoMaterno)
-            put("nombres", usuario.nombres)
-            put("celular", usuario.celular)
-            put("sexo", usuario.sexo)
-            put("correo", usuario.correo)
-            put("direccion", usuario.direccion)
-            put("rol", usuario.rol)
-            put("clave", usuario.clave)
-            put("estado", usuario.estado)
-        }
-        val id = db.insert("Usuario", null, values)
-        db.close()
-        return id
+    fun insertar(usuario: Usuario):Long{
+        return dao.insertar(usuario)
     }
 
     // Listar usuarios activos
@@ -68,7 +53,6 @@ class UsuarioRepository(private val context: Context) {
         val dbHelper = AppDatabaseHelper(context)
         val db = dbHelper.writableDatabase
 
-        // Validar duplicado de DNI
         val cursorDni = db.rawQuery(
             "SELECT id FROM Usuario WHERE dni = ? AND id != ?",
             arrayOf(usuario.dni.toString(), usuario.id.toString())
@@ -79,8 +63,6 @@ class UsuarioRepository(private val context: Context) {
             throw SQLiteConstraintException("DNI duplicado")
         }
         cursorDni.close()
-
-        // Validar duplicado de correo
         val cursorCorreo = db.rawQuery(
             "SELECT id FROM Usuario WHERE correo = ? AND id != ?",
             arrayOf(usuario.correo, usuario.id.toString())
@@ -91,7 +73,6 @@ class UsuarioRepository(private val context: Context) {
             throw SQLiteConstraintException("Correo duplicado")
         }
         cursorCorreo.close()
-
         val valores = ContentValues().apply {
             put("dni", usuario.dni)
             put("apellidoPaterno", usuario.apellidoPaterno)

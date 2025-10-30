@@ -55,7 +55,7 @@ class HistorialUsuariosFragment : Fragment() {
 
 
     private fun mostrarDialogOpciones(usuario: Usuario) {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_opciones_usuario, null)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_opciones, null)
         val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext())
             .setView(dialogView)
             .create()

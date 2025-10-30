@@ -16,14 +16,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Cargar el fragmento inicial (InicioFragment)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, InicioFragment())
                 .commit()
         }
 
-        // Configurar BottomNavigation
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.setOnItemSelectedListener { item ->
             val fragment = when (item.itemId) {

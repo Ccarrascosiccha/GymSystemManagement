@@ -48,6 +48,7 @@
     <color name="gris_medio">#FF424242</color>
     <color name="gris_claro">#FFBDBDBD</color>
     <color name="gris_fondo">#FFF5F5F5</color>
+    <color name="fondos">#FFF9F0</color>
 
     <!-- Colores de acento (opcional, para destacar botones) -->
     <color name="acento">#FF00BCD4</color> <!-- turquesa minimalista -->

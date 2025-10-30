@@ -19,6 +19,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RegistroUsuarioFragment : Fragment() {
 
@@ -230,6 +233,8 @@ class RegistroUsuarioFragment : Fragment() {
     private fun guardarNuevoUsuario() {
         if (!validarCampos()) return
         try {
+            val fechaActual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                .format(Date())
             val usuario = Usuario(
                 dni = tietDni.text.toString().toInt(),
                 apellidoPaterno = tietApellidoPaterno.text.toString(),
@@ -239,13 +244,12 @@ class RegistroUsuarioFragment : Fragment() {
                 sexo = if (rbtMasculino.isChecked) "M" else "F",
                 correo = tietCorreo.text.toString(),
                 direccion = tietDireccion.text.toString(),
-                fechaRegistro = "",
+                fechaRegistro = fechaActual,
                 rol = actRol.text.toString(),
                 clave = tietClave.text.toString(),
                 estado = "Activo",
                 id = 0
             )
-
             val repo = UsuarioRepository(requireContext())
             val id = repo.insertar(usuario)
 
@@ -271,8 +275,6 @@ class RegistroUsuarioFragment : Fragment() {
 
     private fun actualizarUsuario(id: Int) {
         if (!validarCampos()) return
-
-        // Crear objeto Usuario con los datos del formulario
         val usuario = Usuario(
             id = id,
             dni = tietDni.text.toString().toInt(),

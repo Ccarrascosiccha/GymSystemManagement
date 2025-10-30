@@ -38,7 +38,6 @@ class OpcionesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Referencias de vistas
         lnRegistrarPlan = view.findViewById(R.id.ln_registrarPlan)
         lnVerPlanes = view.findViewById(R.id.ln_verPlanes)
         btnPlanesMembresia = view.findViewById(R.id.btnPlanesMembresia)
@@ -50,14 +49,13 @@ class OpcionesFragment : Fragment() {
         lnVerUsuarios = view.findViewById(R.id.ln_verUsuarios)
         lnRegistrarUsuarios = view.findViewById(R.id.ln_registrarUsuarios)
 
-        // Listeners para abrir Fragmentss
         lnRegistrarUsuarios.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .setCustomAnimations(
-                    R.anim.slide_in_right,  // entrada del nuevo fragment
-                    R.anim.slide_out_left,  // salida del actual
-                    R.anim.slide_in_left,   // cuando vuelves atrás
-                    R.anim.slide_out_right  // al cerrar el fragment
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
                 )
                 .replace(R.id.fragmentContainer, RegistroUsuarioFragment())
                 .addToBackStack(null)
@@ -69,29 +67,42 @@ class OpcionesFragment : Fragment() {
         lnVerUsuarios.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .setCustomAnimations(
-                    R.anim.slide_in_right,  // entrada del nuevo fragment
-                    R.anim.slide_out_left,  // salida del actual
-                    R.anim.slide_in_left,   // cuando vuelves atrás
-                    R.anim.slide_out_right  // al cerrar el fragment
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
                 )
                 .replace(R.id.fragmentContainer, HistorialUsuariosFragment())
                 .addToBackStack(null)
                 .commit()
 
         }
-
-
-
-        // Ejemplo: Si luego agregas estas Activities, descomenta estas líneas:
-        /*
         lnRegistrarPlan.setOnClickListener {
-            startActivity(Intent(requireContext(), RegistrarPlanActivity::class.java))
+            parentFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
+                .replace(R.id.fragmentContainer, RegistroPlanMembresiaFragment())
+                .addToBackStack(null)
+                .commit()
         }
 
         lnVerPlanes.setOnClickListener {
-            startActivity(Intent(requireContext(), ListaPlanesActivity::class.java))
+            parentFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
+                .replace(R.id.fragmentContainer, HistorialPlanMembresiaFragment())
+                .addToBackStack(null)
+                .commit()
         }
-        */
+
 
         // Toggle submenús
         btnMembers.setOnClickListener { toggleMenuUsuarios() }
