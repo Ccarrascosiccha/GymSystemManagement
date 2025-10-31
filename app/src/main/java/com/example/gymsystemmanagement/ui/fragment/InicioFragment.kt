@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.adapter.UsuarioAdapter
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
+import com.example.gymsystemmanagement.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

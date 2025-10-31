@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.entity.PlanMembresia
+import com.example.gymsystemmanagement.R
 
 class PlanMembresiaAdapter(private val listaPlanes: List<PlanMembresia>,
     private val onOpciones: (PlanMembresia) -> Unit): RecyclerView.Adapter<PlanMembresiaAdapter.ViewHolder>() {

@@ -5,7 +5,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.adapter.HistorialAdapter
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
@@ -18,6 +17,7 @@ import android.view.*
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import com.example.gymsystemmanagement.ui.fragment.RegistroUsuarioFragment
+import com.example.gymsystemmanagement.R
 
 class HistorialUsuariosFragment : Fragment() {
 

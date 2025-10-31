@@ -10,11 +10,11 @@ import android.widget.*
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
 import com.example.gymsystemmanagement.repository.UsuarioRepository
 import com.example.gymsystemmanagement.ui.HistorialUsuariosFragment
+import com.example.gymsystemmanagement.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText

@@ -123,7 +123,7 @@
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:orientation="horizontal"
+                android:orientation="horizontal"
                 android:layout_marginBottom="12dp" />
 
             <!-- Operaciones -->

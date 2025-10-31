@@ -9,10 +9,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.adapter.PlanMembresiaAdapter
 import com.example.gymsystemmanagement.entity.PlanMembresia
 import com.example.gymsystemmanagement.repository.PlanMembresiaRepository
+import com.example.gymsystemmanagement.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
@@ -141,6 +141,8 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
         mensaje: String,
         textoBotonConfirmar: String = "Confirmar",
         iconoResId: Int = R.drawable.ic_alert,
+        colorBoton: Int = R.color.amarillo2, // Color por defecto
+        iconoBoton: Int = R.drawable.ic_check, // Icono del botón
         onConfirmar: () -> Unit
     ) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_confirmacion, null)
@@ -149,10 +151,8 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
             .setCancelable(true)
             .create()
 
-        // Hacer el fondo transparente para que se vean las esquinas redondeadas
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        // Referencias a las vistas
         val ivIcono = dialogView.findViewById<ImageView>(R.id.ivIconoDialog)
         val tvTitulo = dialogView.findViewById<TextView>(R.id.tvTituloDialog)
         val tvMensaje = dialogView.findViewById<TextView>(R.id.tvMensajeDialog)
@@ -165,7 +165,10 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
         tvMensaje.text = mensaje
         btnConfirmar.text = textoBotonConfirmar
 
-        // Acciones
+        // ⭐ CAMBIAR COLOR E ICONO DEL BOTÓN DINÁMICAMENTE
+        btnConfirmar.backgroundTintList = resources.getColorStateList(colorBoton, null)
+        btnConfirmar.setIconResource(iconoBoton)
+
         btnConfirmar.setOnClickListener {
             onConfirmar()
             dialog.dismiss()

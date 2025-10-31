@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.ui.HistorialUsuariosFragment
+import com.example.gymsystemmanagement.R
 
 class OpcionesFragment : Fragment() {
 

@@ -1,24 +1,25 @@
 package com.example.gymsystemmanagement.ui
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.database.Cursor
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.gymsystemmanagement.R
+import com.example.gymsystemmanagement.data.AppDatabaseHelper
 import com.example.gymsystemmanagement.entity.Usuario
+import com.example.gymsystemmanagement.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AccesoActivity : AppCompatActivity() {
     var tvRegistro : TextView?=null
@@ -27,13 +28,6 @@ class AccesoActivity : AppCompatActivity() {
     private lateinit var tilCorreo : TextInputLayout
     private lateinit var tilPass : TextInputLayout
     private lateinit var btnAcceso: Button
-    private val listaUsuarios = mutableListOf(
-        Usuario(
-            1, 123456789, "Carrasco", "Siccga",
-            "Carlos Daniel", "999999999", "M", "test@gmail.com",
-            "av ancon 1240", "12/12/2023", "Miembro", "123", "Activo"
-        ),
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,34 +58,83 @@ class AccesoActivity : AppCompatActivity() {
             insets
         }
     }
-    fun validarCampos(){
+    fun validarCampos() {
         val correo = tietCorreo.text.toString().trim()
-        val clave= tietPass.text.toString().trim()
-        var error : Boolean = false
-        if(correo.isEmpty()){
-            tilCorreo.error="Ingrese un correo"
-            error=true
-        }else{
-            tilCorreo.error=""
-        }
-        if (clave.isEmpty()) {
-            tilPass.error="Ingrese una contraseña"
+        val clave = tietPass.text.toString().trim()
+        var error = false
+
+        if (correo.isEmpty()) {
+            tilCorreo.error = "Ingrese un correo"
             error = true
-        }else{
-            tilPass.error=""
+        } else {
+            tilCorreo.error = null
         }
-        if (!error) {
-            var usuario : Usuario?= null
-            for (u in listaUsuarios) {
-                if (u.correo == (correo) && u.clave == clave) {
-                    usuario = u
+
+        if (clave.isEmpty()) {
+            tilPass.error = "Ingrese una contraseña"
+            error = true
+        } else {
+            tilPass.error = null
+        }
+
+        if (error) return
+
+        CoroutineScope(Dispatchers.Main).launch {
+            val usuEncontrado = withContext(Dispatchers.IO) {
+                val dbHelper = AppDatabaseHelper(this@AccesoActivity)
+                val db = dbHelper.readableDatabase
+                var usuario: Usuario? = null
+                var cursor: Cursor? = null
+
+                try {
+                    cursor = db.rawQuery(
+                        "SELECT * FROM Usuario WHERE correo = ? AND clave = ?",
+                        arrayOf(correo, clave)
+                    )
+                    if (cursor.moveToFirst()) {
+                        usuario = Usuario(
+                            id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                            dni = cursor.getInt(cursor.getColumnIndexOrThrow("dni")),
+                            apellidoPaterno = cursor.getString(cursor.getColumnIndexOrThrow("apellidoPaterno")),
+                            apellidoMaterno = cursor.getString(cursor.getColumnIndexOrThrow("apellidoMaterno")),
+                            nombres = cursor.getString(cursor.getColumnIndexOrThrow("nombres")),
+                            celular = cursor.getString(cursor.getColumnIndexOrThrow("celular")),
+                            sexo = cursor.getString(cursor.getColumnIndexOrThrow("sexo")),
+                            correo = cursor.getString(cursor.getColumnIndexOrThrow("correo")),
+                            direccion = cursor.getString(cursor.getColumnIndexOrThrow("direccion")),
+                            fechaRegistro = cursor.getString(cursor.getColumnIndexOrThrow("fechaRegistro")),
+                            rol = cursor.getString(cursor.getColumnIndexOrThrow("rol")),
+                            clave = cursor.getString(cursor.getColumnIndexOrThrow("clave")),
+                            estado = cursor.getString(cursor.getColumnIndexOrThrow("estado"))
+                        )
+                    }
+                } catch (e: Exception) {
+                    Log.e("AccesoActivity", "Error al validar usuario: ${e.message}")
+                } finally {
+                    cursor?.close()
+                    db.close()
                 }
+
+                usuario
             }
-            if (usuario !=null){
-                    startActivity(Intent(this, MainActivity::class.java))
-                Toast.makeText(this,"Bienvenido"+ usuario.nombres, Toast.LENGTH_SHORT).show()
-            }else {
-                Toast.makeText(this,"Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+
+            if (usuEncontrado != null) {
+                // Mostrar nombre y apellido materno
+                val nombreCompleto = "${usuEncontrado.nombres} ${usuEncontrado.apellidoMaterno}"
+                Toast.makeText(
+                    this@AccesoActivity,
+                    "Bienvenido, $nombreCompleto",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                startActivity(Intent(this@AccesoActivity, MainActivity::class.java))
+                finish()
+            } else {
+                Toast.makeText(
+                    this@AccesoActivity,
+                    "Usuario o contraseña incorrecta",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

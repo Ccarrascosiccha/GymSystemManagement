@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.gymsystemmanagement.R
+import androidx.recyclerview.widget.RecyclerView
 import com.example.gymsystemmanagement.entity.Usuario
 import com.google.android.material.card.MaterialCardView
 

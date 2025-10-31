@@ -3,10 +3,10 @@ package com.example.gymsystemmanagement.ui
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gymsystemmanagement.R
 import com.example.gymsystemmanagement.ui.fragment.ConfiguracionFragment
 import com.example.gymsystemmanagement.ui.fragment.InicioFragment
 import com.example.gymsystemmanagement.ui.fragment.OpcionesFragment
+import com.example.gymsystemmanagement.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
