@@ -14,6 +14,14 @@ data class Membresia(
     companion object {
         private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         private val displayFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        fun obtenerFechaActual(): String {
+            return dateFormat.format(Date())
+        }
+        fun calcularFechaFin(dias: Int): String {
+            val calendar = Calendar.getInstance()
+            calendar.add(Calendar.DAY_OF_YEAR, dias)
+            return dateFormat.format(calendar.time)
+        }
     }
 
     // Verifica si la membresía está activa
@@ -25,6 +33,7 @@ data class Membresia(
     fun estaVencida(): Boolean {
         return estado == "Vencida" || fechaFinPasada()
     }
+
 
     // Verifica si la fecha de fin ya pasó
     private fun fechaFinPasada(): Boolean {

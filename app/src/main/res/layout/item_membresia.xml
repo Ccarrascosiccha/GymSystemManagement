@@ -39,7 +39,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Codigo Membresia : "
+                        android:text="Código Membresía : "
                         android:textSize="14sp"
                         android:textStyle="bold"
                         style="@style/TextoGeneral"
@@ -50,7 +50,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text=" Carlos Carrasco"
+                        android:text=" 168"
                         android:textSize="14sp"
                         style="@style/TextoGeneral"
                         android:ellipsize="end"

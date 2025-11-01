@@ -1,6 +1,5 @@
 package com.example.gymsystemmanagement.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,19 +12,35 @@ import com.example.gymsystemmanagement.R
 
 class OpcionesFragment : Fragment() {
 
-    private lateinit var lnVerUsuarios: LinearLayout
-    private lateinit var lnRegistrarUsuarios: LinearLayout
-    private lateinit var lnRegistrarPlan: LinearLayout
-    private lateinit var lnVerPlanes: LinearLayout
-    private lateinit var subMenuUsuario: LinearLayout
+    // ========================================
+    // SECCIÓN USUARIOS
+    // ========================================
     private lateinit var btnMembers: LinearLayout
+    private lateinit var subMenuUsuario: LinearLayout
     private lateinit var ivChevron: ImageView
+    private lateinit var lnRegistrarUsuarios: LinearLayout
+    private lateinit var lnVerUsuarios: LinearLayout
+    private var isExpandedUsuarios = false
+
+    // ========================================
+    // SECCIÓN PLANES DE MEMBRESÍA
+    // ========================================
     private lateinit var btnPlanesMembresia: LinearLayout
     private lateinit var subMenuPlanes: LinearLayout
     private lateinit var ivChevronPlanes: ImageView
-
+    private lateinit var lnRegistrarPlan: LinearLayout
+    private lateinit var lnVerPlanes: LinearLayout
     private var isExpandedPlanes = false
-    private var isExpanded = false
+
+    // ========================================
+    // SECCIÓN MEMBRESÍAS (NUEVA)
+    // ========================================
+    private lateinit var btnMembresias: LinearLayout
+    private lateinit var subMenuMembresias: LinearLayout
+    private lateinit var ivChevronMembresias: ImageView
+    private lateinit var lnRegistrarMembresia: LinearLayout
+    private lateinit var lnVerMembresias: LinearLayout
+    private var isExpandedMembresias = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,80 +53,79 @@ class OpcionesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lnRegistrarPlan = view.findViewById(R.id.ln_registrarPlan)
-        lnVerPlanes = view.findViewById(R.id.ln_verPlanes)
-        btnPlanesMembresia = view.findViewById(R.id.btnPlanesMembresia)
-        subMenuPlanes = view.findViewById(R.id.subMenuPlanes)
-        ivChevron = view.findViewById(R.id.ivChevron)
-        ivChevronPlanes = view.findViewById(R.id.ivChevronPlanes)
+        // ========================================
+        // INICIALIZAR VISTAS - USUARIOS
+        // ========================================
         btnMembers = view.findViewById(R.id.btnMembers)
         subMenuUsuario = view.findViewById(R.id.subMenu)
-        lnVerUsuarios = view.findViewById(R.id.ln_verUsuarios)
+        ivChevron = view.findViewById(R.id.ivChevron)
         lnRegistrarUsuarios = view.findViewById(R.id.ln_registrarUsuarios)
+        lnVerUsuarios = view.findViewById(R.id.ln_verUsuarios)
+
+        // ========================================
+        // INICIALIZAR VISTAS - PLANES
+        // ========================================
+        btnPlanesMembresia = view.findViewById(R.id.btnPlanesMembresia)
+        subMenuPlanes = view.findViewById(R.id.subMenuPlanes)
+        ivChevronPlanes = view.findViewById(R.id.ivChevronPlanes)
+        lnRegistrarPlan = view.findViewById(R.id.ln_registrarPlan)
+        lnVerPlanes = view.findViewById(R.id.ln_verPlanes)
+
+        // ========================================
+        // INICIALIZAR VISTAS - MEMBRESÍAS
+        // ========================================
+        btnMembresias = view.findViewById(R.id.btnMembresias)
+        subMenuMembresias = view.findViewById(R.id.subMenuMembresias)
+        ivChevronMembresias = view.findViewById(R.id.ivChevronMembresias)
+        lnRegistrarMembresia = view.findViewById(R.id.ln_registrarMembresia)
+        lnVerMembresias = view.findViewById(R.id.ln_verMembresias)
+
+        // ========================================
+        // CONFIGURAR LISTENERS - USUARIOS
+        // ========================================
+        btnMembers.setOnClickListener { toggleMenuUsuarios() }
 
         lnRegistrarUsuarios.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left,
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                .replace(R.id.fragmentContainer, RegistroUsuarioFragment())
-                .addToBackStack(null)
-                .commit()
-
+            navegarConAnimacion(RegistroUsuarioFragment())
         }
-
 
         lnVerUsuarios.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left,
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                .replace(R.id.fragmentContainer, HistorialUsuariosFragment())
-                .addToBackStack(null)
-                .commit()
-
+            navegarConAnimacion(HistorialUsuariosFragment())
         }
+
+        // ========================================
+        // CONFIGURAR LISTENERS - PLANES
+        // ========================================
+        btnPlanesMembresia.setOnClickListener { toggleMenuPlanes() }
+
         lnRegistrarPlan.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left,
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                .replace(R.id.fragmentContainer, RegistroPlanMembresiaFragment())
-                .addToBackStack(null)
-                .commit()
+            navegarConAnimacion(RegistroPlanMembresiaFragment())
         }
 
         lnVerPlanes.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(
-                    R.anim.slide_in_right,
-                    R.anim.slide_out_left,
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                .replace(R.id.fragmentContainer, HistorialPlanMembresiaFragment())
-                .addToBackStack(null)
-                .commit()
+            navegarConAnimacion(HistorialPlanMembresiaFragment())
         }
 
+        // ========================================
+        // CONFIGURAR LISTENERS - MEMBRESÍAS
+        // ========================================
+        btnMembresias.setOnClickListener { toggleMenuMembresias() }
 
-        // Toggle submenús
-        btnMembers.setOnClickListener { toggleMenuUsuarios() }
-        btnPlanesMembresia.setOnClickListener { toggleMenuPlanes() }
+        lnRegistrarMembresia.setOnClickListener {
+            navegarConAnimacion(RegistroMembresiaFragment())
+        }
+
+        lnVerMembresias.setOnClickListener {
+            navegarConAnimacion(HistorialMembresiaFragment())
+        }
     }
 
+    // ========================================
+    // FUNCIÓN PARA TOGGLE - USUARIOS
+    // ========================================
     private fun toggleMenuUsuarios() {
-        isExpanded = !isExpanded
-        if (isExpanded) {
+        isExpandedUsuarios = !isExpandedUsuarios
+        if (isExpandedUsuarios) {
             subMenuUsuario.visibility = View.VISIBLE
             ivChevron.animate().rotation(180f).setDuration(200).start()
         } else {
@@ -120,6 +134,9 @@ class OpcionesFragment : Fragment() {
         }
     }
 
+    // ========================================
+    // FUNCIÓN PARA TOGGLE - PLANES
+    // ========================================
     private fun toggleMenuPlanes() {
         isExpandedPlanes = !isExpandedPlanes
         if (isExpandedPlanes) {
@@ -129,5 +146,35 @@ class OpcionesFragment : Fragment() {
             subMenuPlanes.visibility = View.GONE
             ivChevronPlanes.animate().rotation(0f).setDuration(200).start()
         }
+    }
+
+    // ========================================
+    // FUNCIÓN PARA TOGGLE - MEMBRESÍAS
+    // ========================================
+    private fun toggleMenuMembresias() {
+        isExpandedMembresias = !isExpandedMembresias
+        if (isExpandedMembresias) {
+            subMenuMembresias.visibility = View.VISIBLE
+            ivChevronMembresias.animate().rotation(180f).setDuration(200).start()
+        } else {
+            subMenuMembresias.visibility = View.GONE
+            ivChevronMembresias.animate().rotation(0f).setDuration(200).start()
+        }
+    }
+
+    // ========================================
+    // FUNCIÓN HELPER PARA NAVEGACIÓN
+    // ========================================
+    private fun navegarConAnimacion(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

@@ -20,10 +20,10 @@ class PlanMembresiaAdapter(private val listaPlanes: List<PlanMembresia>,
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val plan = listaPlanes[position]
-            holder.tvNombre.text = plan.nombrePlan
+            holder.tvNombre.text = plan.nombre
             holder.tvDuracion.text = plan.duracionMeses.toString()
-            holder.tvPrecio.text = plan.precioPlan.toString()
-            holder.tvDescripcion.text = plan.descripcionPlan
+            holder.tvPrecio.text = plan.precio.toString()
+            holder.tvDescripcion.text = plan.descripcion
 
             holder.ivOpciones.setOnClickListener {
                 onOpciones(plan)

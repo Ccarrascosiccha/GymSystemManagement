@@ -22,6 +22,7 @@ class MembresiaAdapter(
     private val displayFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
     inner class MembresiaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val tvIdMembresia: TextView = view.findViewById(R.id.tvIdMembresia)
         val tvNombreUsuario: TextView = view.findViewById(R.id.tvNombreUsuario)
         val tvDni: TextView = view.findViewById(R.id.tvDni)
         val tvPlan: TextView = view.findViewById(R.id.tvPlan)
@@ -43,21 +44,10 @@ class MembresiaAdapter(
     override fun onBindViewHolder(holder: MembresiaViewHolder, position: Int) {
         val membresia = membresias[position]
 
+        holder.tvIdMembresia.text = membresia.id.toString()
         holder.tvNombreUsuario.text = membresia.nombreCompleto
-        holder.tvDni.text = "DNI: ${membresia.dni}"
+        holder.tvDni.text = membresia.dni.toString()
         holder.tvPlan.text = membresia.nombrePlan
-
-        // Formatear fechas
-        try {
-            val fechaInicio = dateFormat.parse(membresia.fechaInicio)
-            val fechaFin = dateFormat.parse(membresia.fechaFin)
-            holder.tvFechaInicio.text = "Inicio: ${displayFormat.format(fechaInicio)}"
-            holder.tvFechaFin.text = "Fin: ${displayFormat.format(fechaFin)}"
-        } catch (e: Exception) {
-            holder.tvFechaInicio.text = "Inicio: ${membresia.fechaInicio}"
-            holder.tvFechaFin.text = "Fin: ${membresia.fechaFin}"
-        }
-
         holder.tvPrecio.text = "S/. ${String.format("%.2f", membresia.precio)}"
         holder.tvEstado.text = membresia.estado
 
@@ -89,10 +79,17 @@ class MembresiaAdapter(
                 holder.btnRenovar.visibility = View.VISIBLE
             }
         }
+        // Formatear fechas
+        try {
+            val fechaInicio = dateFormat.parse(membresia.fechaInicio)
+            val fechaFin = dateFormat.parse(membresia.fechaFin)
+            holder.tvFechaInicio.text = displayFormat.format(fechaInicio)
+            holder.tvFechaFin.text = displayFormat.format(fechaFin)
+        } catch (e: Exception) {
+            holder.tvFechaInicio.text = membresia.fechaInicio
+            holder.tvFechaFin.text = membresia.fechaFin
+        }
 
-        holder.btnVerDetalles.setOnClickListener { onVerDetalles(membresia) }
-        holder.btnCancelar.setOnClickListener { onCancelar(membresia) }
-        holder.btnRenovar.setOnClickListener { onRenovar(membresia) }
     }
 
     override fun getItemCount() = membresias.size

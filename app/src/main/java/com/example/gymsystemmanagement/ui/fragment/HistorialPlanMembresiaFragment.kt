@@ -58,7 +58,7 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
         val btnEliminar = dialogView.findViewById<MaterialButton>(R.id.btnEliminar)
         val btnCancelar = dialogView.findViewById<MaterialButton>(R.id.btnCancelar)
 
-        tvTitulo.text = "Plan: ${plan.nombrePlan}"
+        tvTitulo.text = "Plan: ${plan.nombre}"
 
         btnEditar.setOnClickListener {
             dialog.dismiss()
@@ -92,10 +92,10 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
         val btnActualizar = dialogView.findViewById<MaterialButton>(R.id.btnActualizar)
         val btnCancelar = dialogView.findViewById<MaterialButton>(R.id.btnCancelar)
 
-        etNombre.setText(plan.nombrePlan)
-        etPrecio.setText(plan.precioPlan.toString())
+        etNombre.setText(plan.nombre)
+        etPrecio.setText(plan.precio.toString())
         etDuracion.setText(plan.duracionMeses.toString())
-        etDescripcion.setText(plan.descripcionPlan)
+        etDescripcion.setText(plan.descripcion)
 
         btnActualizar.setOnClickListener {
             if (validarCampos(etNombre, etPrecio, etDuracion, etDescripcion)) {
@@ -103,16 +103,16 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
                 // Mostrar confirmación personalizada
                 mostrarDialogConfirmacion(
                     titulo = "¿Actualizar Plan?",
-                    mensaje = "¿Está seguro de actualizar el plan '${plan.nombrePlan}'?",
+                    mensaje = "¿Está seguro de actualizar el plan '${plan.nombre}'?",
                     textoBotonConfirmar = "Actualizar",
                     iconoResId = R.drawable.ic_check
                 ) {
                     val planActualizado = PlanMembresia(
                         id = plan.id,
-                        nombrePlan = etNombre.text.toString(),
-                        precioPlan = etPrecio.text.toString().toDouble(),
+                        nombre = etNombre.text.toString(),
+                        precio = etPrecio.text.toString().toDouble(),
                         duracionMeses = etDuracion.text.toString().toInt(),
-                        descripcionPlan = etDescripcion.text.toString()
+                        descripcion = etDescripcion.text.toString()
                     )
                     actualizarPlan(planActualizado)
                 }
@@ -129,7 +129,7 @@ class HistorialPlanMembresiaFragment : Fragment(R.layout.fragment_historial_plan
     private fun mostrarDialogEliminar(plan: PlanMembresia) {
         mostrarDialogConfirmacion(
             titulo = "¿Eliminar Plan?",
-            mensaje = "¿Está seguro de eliminar el plan '${plan.nombrePlan}'?\n\nEsta acción no se puede deshacer.",
+            mensaje = "¿Está seguro de eliminar el plan '${plan.nombre}'?\n\nEsta acción no se puede deshacer.",
             textoBotonConfirmar = "Eliminar",
             iconoResId = R.drawable.ic_alert
         ) {

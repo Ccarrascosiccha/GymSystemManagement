@@ -5,6 +5,7 @@
     android:id="@+id/fragment_opciones"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondos"
     tools:context=".ui.fragment.OpcionesFragment">
 
     <ScrollView
@@ -37,7 +38,9 @@
                 android:background="@color/black"
                 android:layout_gravity="center_horizontal" />
 
-            <!-- USUARIOS -->
+            <!-- ========================================= -->
+            <!-- SECCIÓN 1: USUARIOS -->
+            <!-- ========================================= -->
             <LinearLayout
                 android:id="@+id/btnMembers"
                 android:layout_width="match_parent"
@@ -87,7 +90,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -109,7 +113,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -131,14 +136,17 @@
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
 
-            <!-- PLANES DE MEMBRESÍA -->
+            <!-- ========================================= -->
+            <!-- SECCIÓN 2: PLANES DE MEMBRESÍA -->
+            <!-- ========================================= -->
             <LinearLayout
                 android:id="@+id/btnPlanesMembresia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -179,7 +187,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -201,7 +210,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="8dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -222,6 +232,227 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
+
+            <!-- ========================================= -->
+            <!-- SECCIÓN 3: MEMBRESÍAS -->
+            <!-- ========================================= -->
+            <LinearLayout
+                android:id="@+id/btnMembresias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_membresia"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:text="Membresías"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivChevronMembresias"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="#7C7C7C" />
+            </LinearLayout>
+
+            <!-- SUBMENÚ MEMBRESÍAS -->
+            <LinearLayout
+                android:id="@+id/subMenuMembresias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginStart="40dp"
+                android:paddingTop="4dp">
+
+                <LinearLayout
+                    android:id="@+id/ln_registrarMembresia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_membresia"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Registrar membresía"
+                        android:textColor="#333333" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_verMembresias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:gravity="center_vertical"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_membresia"
+                        app:tint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Ver membresías"
+                        android:textColor="#333333" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+
+            <!-- ========================================= -->
+            <!-- SECCIONES COMENTADAS PARA FUTURO -->
+            <!-- ========================================= -->
+
+            <!--
+            <LinearLayout
+                android:id="@+id/btnTransacciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_transactions"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:text="Transacciones"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+            -->
+
+            <!--
+            <LinearLayout
+                android:id="@+id/btnProductos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_products"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:text="Productos/Equipos"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+            -->
+
+            <!--
+            <LinearLayout
+                android:id="@+id/btnAsistencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_attendance"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:text="Asistencia"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+            -->
+
+            <!--
+            <LinearLayout
+                android:id="@+id/btnReportes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_reports"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:text="Reportes"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            -->
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

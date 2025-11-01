@@ -54,9 +54,9 @@ class MembresiaRepository(context: Context) {
                 val transaccion = Transaccion(
                     idUsuario = idUsuario,
                     idMembresia = idMembresia.toInt(),
-                    monto = plan.precioPlan,
+                    monto = plan.precio,
                     tipo = "Cr", // Crédito (ingreso)
-                    descripcion = "Pago de membresía: ${plan.nombrePlan} - $metodoPago",
+                    descripcion = "Pago de membresía: ${plan.nombre} - $metodoPago",
                     fecha = fechaInicio
                 )
                 transaccionDAO.insertarTransaccion(transaccion)

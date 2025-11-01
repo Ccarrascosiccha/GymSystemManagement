@@ -56,9 +56,9 @@ class RegistroPlanMembresiaFragment: Fragment(R.layout.fragment_registro_plan_me
         if(!validarCampos()) return
         try {
             val planMembresia = PlanMembresia(
-                nombrePlan = etNomPlanMembresia.text.toString(),
-                descripcionPlan = etDescPlanMembresia.text.toString(),
-                precioPlan = etPrecioPlanMembresia.text.toString().toDouble(),
+                nombre = etNomPlanMembresia.text.toString(),
+                descripcion = etDescPlanMembresia.text.toString(),
+                precio = etPrecioPlanMembresia.text.toString().toDouble(),
                 duracionMeses = etDuracionPlanMembresia.text.toString().toInt()
             )
             val repo = PlanMembresiaRepository(requireContext())
