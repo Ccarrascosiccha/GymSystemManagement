@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     alias(libs.plugins.google.gms.google.services)
-//    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
@@ -42,20 +41,12 @@ android {
 }
 
 dependencies {
-    // Firebase BOM (gestiona versiones automáticamente) ⭐
     implementation(platform(libs.firebase.bom))
 
-//    // Firebase (ahora sin versiones, las gestiona el BOM)
-//    implementation(libs.firebase.auth)
-//    implementation(libs.firebase.storage)
-//    implementation(libs.firebase.database.ktx)
-
-    // Google Play Services
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.android.gms:play-services-maps:19.0.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
-
-    // AndroidX
+    
     implementation(libs.androidx.drawerlayout)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.core.ktx)
@@ -74,9 +65,13 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.firebase.database)
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.google.firebase.auth)
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     // Testing

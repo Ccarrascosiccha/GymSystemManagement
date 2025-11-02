@@ -50,6 +50,13 @@ class OpcionesFragment : Fragment() {
     private lateinit var ivChevronTransacciones: ImageView
     private var isExpandedTransacciones = false
 
+    private lateinit var btnProductos: LinearLayout
+    private lateinit var lnVerProductos: LinearLayout
+    private lateinit var subMenuProductos: LinearLayout
+    private lateinit var ivChevronProductos: ImageView
+    private var isExpandedProductos = false
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -97,6 +104,12 @@ class OpcionesFragment : Fragment() {
         lnVerTransacciones = view.findViewById(R.id.ln_verTransacciones)
 
         // ========================================
+        btnProductos = view.findViewById(R.id.btnProductos)
+        subMenuProductos = view.findViewById(R.id.subMenuProductos)
+        ivChevronProductos = view.findViewById(R.id.ivChevronProductos)
+        lnVerProductos = view.findViewById(R.id.ln_verProductos)
+
+
         // CONFIGURAR LISTENERS - USUARIOS
         // ========================================
         btnMembers.setOnClickListener { toggleMenuUsuarios() }
@@ -142,6 +155,26 @@ class OpcionesFragment : Fragment() {
 
         lnVerTransacciones.setOnClickListener {
             navegarConAnimacion(HistorialTransaccionesFragment())
+        }
+
+        // ========================================
+        // CONFIGURAR LISTENERS - PRODUCTOS
+        // ========================================
+
+        btnProductos.setOnClickListener { toggleMenuProductos() }
+        lnVerProductos.setOnClickListener {
+            navegarConAnimacion(HistorialProductosFragment())
+        }
+
+    }
+    private fun toggleMenuProductos() {
+        isExpandedProductos = !isExpandedProductos
+        if (isExpandedProductos) {
+            subMenuProductos.visibility = View.VISIBLE
+            ivChevronProductos.animate().rotation(180f).setDuration(200).start()
+        } else {
+            subMenuProductos.visibility = View.GONE
+            ivChevronProductos.animate().rotation(0f).setDuration(200).start()
         }
     }
     private fun toggleMenuTransacciones() {

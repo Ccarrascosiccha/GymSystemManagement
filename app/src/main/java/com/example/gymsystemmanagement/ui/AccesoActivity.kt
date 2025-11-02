@@ -42,6 +42,7 @@ class AccesoActivity : AppCompatActivity() {
         btnAcceso = findViewById(R.id.btnAcceso)
 
 
+
         btnAcceso.setOnClickListener {
         validarCampos()
         }
