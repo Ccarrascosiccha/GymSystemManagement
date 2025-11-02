@@ -8,13 +8,18 @@
 
 
     <TextView
+        android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historial de Planes de Membresía"
-        android:textAppearance="@style/Titulos"
-        android:gravity="center"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp" />
+        android:text="HISTORIAL PLANES DE MEMBRESÍA"
+        style="@style/Titulos"
+        android:layout_marginBottom="8dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:background="@color/azul2"
+        android:layout_marginBottom="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlanesMemb"

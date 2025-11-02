@@ -55,5 +55,17 @@
     <color name="acento_rojo">#FFE53935</color> <!-- rojo moderno para alertas -->
     <color name="green">#195F1D</color>
     <color name="red">#F44336</color>
+    <!-- Colores para transacciones de ingreso (verde) -->
+    <color name="green_success">#4CAF50</color>
+    <color name="green_light">#E8F5E9</color>
+
+    <!-- Colores para transacciones de egreso (rojo) -->
+    <color name="red_error">#F44336</color>
+    <color name="red_light">#FFEBEE</color>
+
+    <!-- Otros colores útiles -->
+    <color name="gray_text">#9E9E9E</color>
+    <color name="gray_dark">#2C2C2C</color>
+    <color name="card_background">#F5F5F5</color>
 
 </resources>

@@ -22,14 +22,18 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/ivTitulo"
-                style="@style/Titulos"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/titulo_RegPlanMembresia"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp" />
+                android:text="REGISTRO DE PLAN"
+                style="@style/Titulos"
+                android:layout_marginBottom="8dp" />
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:background="@color/azul2"
+                android:layout_marginBottom="16dp" />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilNomPlanMembresia"
                 android:layout_width="match_parent"

@@ -22,6 +22,16 @@ data class Membresia(
             calendar.add(Calendar.DAY_OF_YEAR, dias)
             return dateFormat.format(calendar.time)
         }
+        fun fromCursor(cursor: android.database.Cursor): Membresia {
+            return Membresia(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("idUsuario")),
+                idPlan = cursor.getInt(cursor.getColumnIndexOrThrow("idPlan")),
+                fechaInicio = cursor.getString(cursor.getColumnIndexOrThrow("fechaInicio")),
+                fechaFin = cursor.getString(cursor.getColumnIndexOrThrow("fechaFin")),
+                estado = cursor.getString(cursor.getColumnIndexOrThrow("estado"))
+            )
+        }
     }
 
     // Verifica si la membresía está activa
@@ -84,4 +94,5 @@ data class Membresia(
         val dias = diasRestantes()
         return dias in 1..7 && estaActiva()
     }
+
 }

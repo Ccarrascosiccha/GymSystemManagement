@@ -5,6 +5,7 @@ import com.example.gymsystemmanagement.data.MembresiaDAO
 import com.example.gymsystemmanagement.data.PlanMembresiaDAO
 import com.example.gymsystemmanagement.data.TransaccionDAO
 import com.example.gymsystemmanagement.entity.Membresia
+import com.example.gymsystemmanagement.entity.MembresiaCompleta
 import com.example.gymsystemmanagement.entity.PlanMembresia
 import com.example.gymsystemmanagement.entity.Transaccion
 import java.text.SimpleDateFormat
@@ -35,7 +36,7 @@ class MembresiaRepository(context: Context) {
             // Cancelar membresías activas previas
             val membresiaActiva = membresiaDAO.obtenerMembresiaActivaDeUsuario(idUsuario)
             if (membresiaActiva != null) {
-                membresiaDAO.actualizarEstadoMembresia(membresiaActiva.id, "Cancelada")
+                membresiaDAO.actualizarEstado(membresiaActiva.id, "Cancelada")
             }
 
             // Crear nueva membresía
@@ -83,7 +84,7 @@ class MembresiaRepository(context: Context) {
                 ?: return ResultadoAsignacion(false, "Plan no encontrado", null)
 
             // Marcar la membresía actual como vencida
-            membresiaDAO.actualizarEstadoMembresia(membresiaActual.id, "Vencida")
+            membresiaDAO.actualizarEstado(membresiaActual.id, "Vencida")
 
             // Crear nueva membresía con el mismo plan
             return asignarMembresia(idUsuario, membresiaActual.idPlan)
@@ -92,16 +93,10 @@ class MembresiaRepository(context: Context) {
         }
     }
 
-    fun cancelarMembresia(idMembresia: Int): Boolean {
-        return membresiaDAO.actualizarEstadoMembresia(idMembresia, "Cancelada") > 0
-    }
 
-    fun obtenerMembresiasConDetalles(): List<MembresiaDAO.MembresiaDetalle> {
-        return membresiaDAO.obtenerMembresiasConDetalles()
-    }
 
-    fun obtenerMembresiasActivas(): List<MembresiaDAO.MembresiaDetalle> {
-        return membresiaDAO.obtenerMembresiasConDetalles().filter { it.estado == "Activa" }
+    fun obtenerMembresiasActivas(): List<MembresiaCompleta> {
+        return membresiaDAO.obtenerMembresiasActivasCompletas()
     }
 
     fun obtenerHistorialUsuario(idUsuario: Int): List<Membresia> {
@@ -112,9 +107,6 @@ class MembresiaRepository(context: Context) {
         return planMembresiaDAO.obtenerTodosLosPlanes()
     }
 
-    fun verificarMembresiasVencidas() {
-        membresiaDAO.verificarYActualizarMembresiasVencidas()
-    }
     data class ResultadoAsignacion(
         val exito: Boolean,
         val mensaje: String,

@@ -23,17 +23,20 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <!-- TÍTULO -->
             <TextView
                 android:id="@+id/tvTitulo"
-                style="@style/Titulos"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registrar Membresía"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp" />
+                android:text="REGISTRO DE MEMBRESÍA"
+                style="@style/Titulos"
+                android:layout_marginBottom="8dp" />
 
-            <!-- CAMPO: CÓDIGO DE USUARIO -->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:background="@color/azul2"
+                android:layout_marginBottom="16dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilUsuario"
                 android:layout_width="match_parent"
@@ -51,7 +54,6 @@
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- CAMPO: SELECCIONAR PLAN -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPlan"
                 android:layout_width="match_parent"
@@ -65,12 +67,59 @@
                     android:id="@+id/actvPlan"
                     style="@style/TextoGeneral"
                     android:layout_width="match_parent"
+                    android:background="@color/fondos"
                     android:layout_height="wrap_content"
                     android:inputType="none"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- CAMPO: FECHA INICIO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardInfoPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#E8F5E9"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tvDescripcionPlan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Descripción del plan"
+                        android:textColor="#1B5E20"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvDuracionPlan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Duración: 3 meses"
+                        android:textColor="#2E7D32"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvPrecioPlan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Precio: S/. 270.00"
+                        android:textColor="#1B5E20"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilFechaInicio"
                 android:layout_width="match_parent"
@@ -93,7 +142,6 @@
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- CAMPO: FECHA FIN (NO EDITABLE) -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilFechaFin"
                 android:layout_width="match_parent"
@@ -116,6 +164,63 @@
                     android:singleLine="true"
                     android:background="@android:color/transparent"
                     android:enabled="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMetodoPago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Método de pago"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvMetodoPago"
+                    style="@style/TextoGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/fondos"
+                    android:inputType="none"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CAMPO: MONTO A PAGAR -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMonto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Monto a pagar"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                app:prefixText="S/. ">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMonto"
+                    style="@style/TextoGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CAMPO: OBSERVACIONES (OPCIONAL) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Observaciones (opcional)"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etObservaciones"
+                    style="@style/TextoGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:gravity="top"
+                    android:maxLines="5" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- BOTONES -->

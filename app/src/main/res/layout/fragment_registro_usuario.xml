@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/fondos"
     android:padding="16dp"
     tools:context=".ui.fragment.RegistroUsuarioFragment">
 
@@ -30,11 +30,17 @@
 
             <TextView
                 android:id="@+id/tvTitulo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registro de nuevo usuario"
-                android:layout_marginTop="16dp"
-                style="@style/titulo"/>
+                android:text="REGISTRO DE USUARIO"
+                style="@style/Titulos"
+                android:layout_marginBottom="8dp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:background="@color/azul2"
+                android:layout_marginBottom="16dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilDni"
@@ -53,7 +59,7 @@
                     android:singleLine="true"
                     android:inputType="number"
                     android:maxLength="8"
-                    style="@style/input"/>
+                    style="@style/TextoGeneral" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -80,7 +86,7 @@
                         android:inputType="textCapWords|textPersonName"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ "
                         android:nextFocusDown="@id/tietApellidoMaterno"
-                        style="@style/input"/>
+                        style="@style/TextoGeneral" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +104,7 @@
                         android:singleLine="true"
                         android:inputType="textCapWords|textPersonName"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ "
-                        style="@style/input"/>
+                        style="@style/TextoGeneral" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -117,7 +123,7 @@
                     android:singleLine="true"
                     android:inputType="textCapWords|textPersonName"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ "
-                    style="@style/input"/>
+                    style="@style/TextoGeneral" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -137,7 +143,7 @@
                     android:singleLine="true"
                     android:inputType="phone"
                     android:maxLength="9"
-                    style="@style/input"/>
+                    style="@style/TextoGeneral" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:inputType="textPostalAddress"
-                    style="@style/input"/>
+                    style="@style/TextoGeneral" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -164,7 +170,7 @@
                 android:text="Sexo:"
                 android:paddingHorizontal="8dp"
                 android:layout_marginHorizontal="16dp"
-                style="@style/output"/>
+                style="@style/TextoGeneral" />
 
             <RadioGroup
                 android:id="@+id/rgSexo"
@@ -180,7 +186,7 @@
                     android:text="Masculino"
                     android:layout_weight="1"
                     android:padding="8dp"
-                    app:buttonTint="@color/checkbox"/>
+                    app:buttonTint="@color/checkbox" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/rbtFemenino"
@@ -189,7 +195,7 @@
                     android:text="Femenino"
                     android:layout_weight="1"
                     android:padding="8dp"
-                    app:buttonTint="@color/checkbox"/>
+                    app:buttonTint="@color/checkbox" />
             </RadioGroup>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -199,15 +205,15 @@
                 android:hint="Correo"
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="16dp"
-                app:suffixTextAppearance="@style/input">
+                app:suffixTextAppearance="@style/TextoGeneral">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:inputType="text"
-                    style="@style/input"/>
+                    android:inputType="textEmailAddress"
+                    style="@style/TextoGeneral" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -216,14 +222,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginHorizontal="16dp"
-                app:endIconMode="dropdown_menu">
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/actRol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Seleccione un rol"
-                    android:inputType="none"/>
+                    android:background="@color/fondos"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    style="@style/TextoGeneral" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -249,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:inputType="textPassword"
-                        style="@style/input"/>
+                        style="@style/TextoGeneral" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -266,7 +275,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:inputType="textPassword"
-                        style="@style/input"/>
+                        style="@style/TextoGeneral" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -279,23 +288,23 @@
                 android:weightSum="2"
                 android:gravity="center">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGuardar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="Guardar datos"
-                    style="@style/boton"/>
+                    android:text="Registrar"
+                    style="@style/BotonRegistrar" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnVerUsuarios"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:text="Ver Usuarios"
-                    style="@style/boton"/>
+                    style="@style/BotonCancelar" />
             </LinearLayout>
 
         </LinearLayout>

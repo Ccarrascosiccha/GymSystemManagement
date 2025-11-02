@@ -33,7 +33,7 @@ class OpcionesFragment : Fragment() {
     private var isExpandedPlanes = false
 
     // ========================================
-    // SECCIÓN MEMBRESÍAS (NUEVA)
+    // SECCIÓN MEMBRESÍAS
     // ========================================
     private lateinit var btnMembresias: LinearLayout
     private lateinit var subMenuMembresias: LinearLayout
@@ -41,6 +41,14 @@ class OpcionesFragment : Fragment() {
     private lateinit var lnRegistrarMembresia: LinearLayout
     private lateinit var lnVerMembresias: LinearLayout
     private var isExpandedMembresias = false
+    // ========================================
+    // SECCIÓN MEMBRESÍAS
+    // ========================================
+    private lateinit var btnTransacciones: LinearLayout
+    private lateinit var lnVerTransacciones: LinearLayout
+    private lateinit var subMenuTransacciones: LinearLayout
+    private lateinit var ivChevronTransacciones: ImageView
+    private var isExpandedTransacciones = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,6 +89,14 @@ class OpcionesFragment : Fragment() {
         lnVerMembresias = view.findViewById(R.id.ln_verMembresias)
 
         // ========================================
+        // INICIALIZAR VISTAS - TRANSACCIONES
+        // ========================================
+        btnTransacciones = view.findViewById(R.id.btnTransacciones)
+        subMenuTransacciones = view.findViewById(R.id.subMenuTransacciones)
+        ivChevronTransacciones = view.findViewById(R.id.ivChevronTransacciones)
+        lnVerTransacciones = view.findViewById(R.id.ln_verTransacciones)
+
+        // ========================================
         // CONFIGURAR LISTENERS - USUARIOS
         // ========================================
         btnMembers.setOnClickListener { toggleMenuUsuarios() }
@@ -118,9 +134,29 @@ class OpcionesFragment : Fragment() {
         lnVerMembresias.setOnClickListener {
             navegarConAnimacion(HistorialMembresiaFragment())
         }
+
+        // ========================================
+        // CONFIGURAR LISTENERS - TRANSACCIONES
+        // ========================================
+        btnTransacciones.setOnClickListener { toggleMenuTransacciones() }
+
+        lnVerTransacciones.setOnClickListener {
+            navegarConAnimacion(HistorialTransaccionesFragment())
+        }
+    }
+    private fun toggleMenuTransacciones() {
+        isExpandedTransacciones = !isExpandedTransacciones
+        if (isExpandedTransacciones) {
+            subMenuTransacciones.visibility = View.VISIBLE
+            ivChevronTransacciones.animate().rotation(180f).setDuration(200).start()
+        } else {
+            subMenuTransacciones.visibility = View.GONE
+            ivChevronTransacciones.animate().rotation(0f).setDuration(200).start()
+        }
     }
 
-    // ========================================
+
+// ========================================
     // FUNCIÓN PARA TOGGLE - USUARIOS
     // ========================================
     private fun toggleMenuUsuarios() {
