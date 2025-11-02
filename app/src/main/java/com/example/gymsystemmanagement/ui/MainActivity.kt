@@ -3,7 +3,6 @@ package com.example.gymsystemmanagement.ui
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gymsystemmanagement.ui.fragment.ConfiguracionFragment
 import com.example.gymsystemmanagement.ui.fragment.InicioFragment
 import com.example.gymsystemmanagement.ui.fragment.OpcionesFragment
 import com.example.gymsystemmanagement.R
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             val fragment = when (item.itemId) {
                 R.id.itInicio -> InicioFragment()
                 R.id.itOpciones -> OpcionesFragment()
+                R.id.itConfiguracion -> ConfiguracionFragment()
                 else -> null
             }
 

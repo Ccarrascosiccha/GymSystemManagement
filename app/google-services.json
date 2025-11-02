@@ -12,7 +12,12 @@
           "package_name": "com.example.gymsystemmanagement"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "129774933191-cif28uchd2cq5osg7tvfdcq10tlueahl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDYPLtvHN4uTtJ1EJ7rTiIczF_WyTZB7qY"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129774933191-cif28uchd2cq5osg7tvfdcq10tlueahl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

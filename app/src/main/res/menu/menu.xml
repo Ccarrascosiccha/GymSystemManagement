@@ -15,7 +15,7 @@
             android:title="Opciones"
             android:icon="@drawable/ic_options"/>
         <item
-            android:id="@+id/itasd"
+            android:id="@+id/itConfiguracion"
             android:title="Configuración"
             android:icon="@drawable/ic_settings_db"/>
     </group>

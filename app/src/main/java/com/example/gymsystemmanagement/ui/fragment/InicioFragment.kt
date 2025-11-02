@@ -135,9 +135,16 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
 
     private fun configurarListeners() {
         btnSeeAll.setOnClickListener {
-            Log.d("InicioFragment", "Click en 'Ver todo'")
-            Toast.makeText(requireContext(), "Ver todas las transacciones", Toast.LENGTH_SHORT).show()
-            // TODO: Navegar a TransaccionesFragment cuando lo crees
+            parentFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left,
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
+                .replace(R.id.fragmentContainer, HistorialTransaccionesFragment())
+                .addToBackStack(null)
+                .commit()
         }
 
         fabAnhiadir.setOnClickListener {
@@ -150,7 +157,7 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
                     R.anim.slide_in_left,
                     R.anim.slide_out_right
                 )
-                .replace(R.id.fragmentContainer, RegistroMembresiaFragment())
+                .replace(R.id.fragmentContainer, RegistroUsuarioFragment())
                 .addToBackStack(null)
                 .commit()
         }
@@ -284,7 +291,7 @@ class InicioFragment : Fragment(R.layout.fragment_inicio) {
                     Log.d("InicioFragment", "✓ tvMiembrosNuevos actualizado: $nuevosMiembros")
 
                     val fechaActual = java.text.SimpleDateFormat(
-                        "hh:mm a\nMMMM dd, yyyy",
+                        "dd/mm/yyyy",
                         java.util.Locale("es", "PE")
                     ).format(java.util.Date())
 

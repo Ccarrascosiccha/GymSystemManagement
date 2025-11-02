@@ -6,5 +6,6 @@
         <item>Admin</item>
     </string-array>
     <string name="titulo_RegPlanMembresia">Registro Plan de Membresía</string>
+    <string name="default_web_client_id">129774933191-cif28uchd2cq5osg7tvfdcq10tlueahl.apps.googleusercontent.com</string>
 
 </resources>

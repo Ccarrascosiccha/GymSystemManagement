@@ -46,7 +46,12 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.android.gms:play-services-maps:19.0.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
-    
+    // Firebase BOM
+    implementation ("com.google.firebase:firebase-bom:32.7.0")
+    implementation ("com.google.firebase:firebase-auth-ktx")
+
+    // Google Sign In
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
     implementation(libs.androidx.drawerlayout)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.core.ktx)
