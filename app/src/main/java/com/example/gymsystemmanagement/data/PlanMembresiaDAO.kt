@@ -87,12 +87,6 @@ class PlanMembresiaDAO(context: Context) {
         return listaPlanes
     }
 
-    /**
-     * ✅ NUEVA FUNCIÓN: Obtiene el ID de un plan buscando por su nombre
-     *
-     * @param nombre El nombre del plan (ej: "Plan Mensual")
-     * @return El ID del plan encontrado, o 0 si no existe
-     */
     fun obtenerIdPorNombre(nombre: String): Int {
         val db = dbHelper.readableDatabase
 
@@ -115,11 +109,6 @@ class PlanMembresiaDAO(context: Context) {
         return idPlan
     }
 
-    /**
-     * ✅ BONUS: Obtiene solo los nombres de los planes (para el AutoCompleteTextView)
-     *
-     * @return Lista de nombres de planes
-     */
     fun obtenerNombresPlanes(): List<String> {
         val db = dbHelper.readableDatabase
         val nombres = mutableListOf<String>()
