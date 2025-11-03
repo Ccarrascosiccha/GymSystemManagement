@@ -144,9 +144,10 @@ class AccesoActivity : AppCompatActivity() {
         }
 
         tvRegistro.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, RegistroActivity::class.java))
         }
     }
+
 
     private fun enviarCodigoVerificacion(telefono: String) {
         codigoEnviado = true
@@ -255,7 +256,7 @@ class AccesoActivity : AppCompatActivity() {
                     arrayOf(correo, clave)
                 )
                 val user = if (cursor.moveToFirst()) {
-                    cursor.getInt(cursor.getColumnIndexOrThrow("id_usuario"))
+                    cursor.getInt(cursor.getColumnIndexOrThrow("id"))
                 } else null
                 cursor.close()
                 db.close()

@@ -15,6 +15,7 @@ import com.example.gymsystemmanagement.entity.Usuario
 import com.example.gymsystemmanagement.repository.UsuarioRepository
 import com.example.gymsystemmanagement.ui.HistorialUsuariosFragment
 import com.example.gymsystemmanagement.R
+import com.example.gymsystemmanagement.ui.RegistroActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
@@ -25,9 +26,8 @@ import java.util.Locale
 
 class RegistroUsuarioFragment : Fragment() {
 
-    private var idUsuario: Int? = null // Si es distinto de null → modo edición
+    private var idUsuario: Int? = null
 
-    // --- Vistas ---
     private lateinit var tietDni: TextInputEditText
     private lateinit var tietApellidoPaterno: TextInputEditText
     private lateinit var tietApellidoMaterno: TextInputEditText
@@ -45,7 +45,6 @@ class RegistroUsuarioFragment : Fragment() {
     private lateinit var actRol: MaterialAutoCompleteTextView
     private lateinit var containerPassword: LinearLayout
 
-    // --- TextInputLayouts para validación ---
     private lateinit var tilDni: TextInputLayout
     private lateinit var tilApellidoPaterno: TextInputLayout
     private lateinit var tilApellidoMaterno: TextInputLayout
@@ -70,13 +69,17 @@ class RegistroUsuarioFragment : Fragment() {
         configurarEventos()
         idUsuario = arguments?.getInt("idUsuario")
 
+        // CAMBIO 1: Ocultar botón "Ver Usuarios" si viene desde RegistroActivity
+        if (activity is RegistroActivity) {
+            btnVerUsuarios.visibility = View.GONE
+        }
+
         if (idUsuario != null) {
             cargarDatosUsuario(idUsuario!!)
             btnGuardar.text = "Actualizar usuario"
             btnGuardar.setBackgroundColor(resources.getColor(R.color.amarillo2, null))
         }
 
-        // Ajuste para el teclado
         ViewCompat.setOnApplyWindowInsetsListener(view.findViewById(R.id.main)) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -140,6 +143,11 @@ class RegistroUsuarioFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+    }
+
+    private fun registroExitoso() {
+        Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
+        (activity as? RegistroActivity)?.navegarAMain()
     }
 
     private fun cargarDatosUsuario(id: Int) {
@@ -230,6 +238,7 @@ class RegistroUsuarioFragment : Fragment() {
         rbtFemenino.isChecked = false
     }
 
+    // CAMBIO 2: Modificar guardarNuevoUsuario para distinguir entre flujos
     private fun guardarNuevoUsuario() {
         if (!validarCampos()) return
         try {
@@ -258,14 +267,21 @@ class RegistroUsuarioFragment : Fragment() {
                 return
             }
 
-            mostrarSnackbar("Usuario guardado correctamente", R.color.verde1, "Ver") {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, HistorialUsuariosFragment())
-                    .addToBackStack(null)
-                    .commit()
+            // Verificar desde dónde viene
+            if (activity is RegistroActivity) {
+                // Viene desde la pantalla de registro (nuevo usuario registrándose)
+                registroExitoso()
+            } else {
+                // Viene desde MainActivity (admin creando usuario)
+                mostrarSnackbar("Usuario guardado correctamente", R.color.verde1, "Ver") {
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, HistorialUsuariosFragment())
+                        .addToBackStack(null)
+                        .commit()
+                }
+                limpiarFormulario()
             }
 
-            limpiarFormulario()
         } catch (e: SQLiteConstraintException) {
             mostrarSnackbar("DNI o correo ya registrado", R.color.red)
         } catch (e: Exception) {
@@ -318,8 +334,6 @@ class RegistroUsuarioFragment : Fragment() {
             mostrarSnackbar("Error inesperado: ${e.message}", R.color.red)
         }
     }
-
-
 
     private fun mostrarSnackbar(mensaje: String, color: Int, accion: String? = null, onClick: (() -> Unit)? = null) {
         val snackbar = Snackbar.make(requireView(), mensaje, Snackbar.LENGTH_LONG)

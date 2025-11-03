@@ -39,12 +39,6 @@ data class Membresia(
         return estado == "Activa"
     }
 
-    // Verifica si la membresía está vencida
-    fun estaVencida(): Boolean {
-        return estado == "Vencida" || fechaFinPasada()
-    }
-
-
     // Verifica si la fecha de fin ya pasó
     private fun fechaFinPasada(): Boolean {
         return try {

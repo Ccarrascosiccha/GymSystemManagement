@@ -34,9 +34,7 @@
                 android:background="@color/azul2"
                 android:layout_marginBottom="16dp" />
 
-            <!-- ========================================= -->
             <!-- SECCIÓN 1: USUARIOS -->
-            <!-- ========================================= -->
             <LinearLayout
                 android:id="@+id/btnMembers"
                 android:layout_width="match_parent"
@@ -51,7 +49,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_users"
-                    app:tint="@color/black" />
+                    app:tint="@color/azul2" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -59,7 +57,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:text="Usuarios"
-                    android:textColor="#2B2B2B"
+                    style="@style/TextoGeneral"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -67,7 +65,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_chevron_down"
-                    app:tint="#7C7C7C" />
+                    app:tint="@color/azul2" />
             </LinearLayout>
 
             <!-- SUBMENÚ USUARIOS -->
@@ -93,14 +91,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_add_users"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Añadir Usuarios"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -116,14 +114,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_ver_usuarios"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Ver Usuarios"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -132,9 +130,7 @@
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
 
-            <!-- ========================================= -->
             <!-- SECCIÓN 2: PLANES DE MEMBRESÍA -->
-            <!-- ========================================= -->
             <LinearLayout
                 android:id="@+id/btnPlanesMembresia"
                 android:layout_width="match_parent"
@@ -148,7 +144,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_planes_membresia"
-                    app:tint="#000000" />
+                    app:tint="@color/azul2" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -156,7 +152,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:text="Planes de membresía"
-                    android:textColor="@color/black"
+                    style="@style/TextoGeneral"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -164,7 +160,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_chevron_down"
-                    app:tint="#7C7C7C" />
+                    app:tint="@color/azul2" />
             </LinearLayout>
 
             <!-- SUBMENÚ PLANES -->
@@ -190,14 +186,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_planes_membresia"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Añadir plan"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -213,14 +209,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_planes_membresia"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Ver planes"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -229,9 +225,7 @@
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
 
-            <!-- ========================================= -->
             <!-- SECCIÓN 3: MEMBRESÍAS -->
-            <!-- ========================================= -->
             <LinearLayout
                 android:id="@+id/btnMembresias"
                 android:layout_width="match_parent"
@@ -245,7 +239,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_membresia"
-                    app:tint="#000000" />
+                    app:tint="@color/azul2" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -253,7 +247,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:text="Membresías"
-                    android:textColor="@color/black"
+                    style="@style/TextoGeneral"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -261,7 +255,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_chevron_down"
-                    app:tint="#7C7C7C" />
+                    app:tint="@color/azul2" />
             </LinearLayout>
 
             <!-- SUBMENÚ MEMBRESÍAS -->
@@ -287,14 +281,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_membresia"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Registrar membresía"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -310,14 +304,14 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_membresia"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Ver membresías"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -326,8 +320,7 @@
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
 
-            <!-- ========================================= -->
-
+            <!-- SECCIÓN 4: TRANSACCIONES -->
             <LinearLayout
                 android:id="@+id/btnTransacciones"
                 android:layout_width="match_parent"
@@ -341,7 +334,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_transactions"
-                    app:tint="#000000" />
+                    app:tint="@color/azul2" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -349,16 +342,18 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:text="Transacciones"
-                    android:textColor="@color/black"
+                    style="@style/TextoGeneral"
                     android:textSize="16sp" />
+
                 <ImageView
                     android:id="@+id/ivChevronTransacciones"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_chevron_down"
-                    app:tint="#7C7C7C" />
-
+                    app:tint="@color/azul2" />
             </LinearLayout>
+
+            <!-- SUBMENÚ TRANSACCIONES -->
             <LinearLayout
                 android:id="@+id/subMenuTransacciones"
                 android:layout_width="match_parent"
@@ -381,21 +376,23 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_transactions"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Ver transacciones"
-                        android:textColor="#333333" />
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
-            <!-- ========================================= -->
+
+            <!-- SECCIÓN 5: PRODUCTOS -->
             <LinearLayout
                 android:id="@+id/btnProductos"
                 android:layout_width="match_parent"
@@ -408,7 +405,6 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    style="@style/TextoGeneral"
                     android:src="@drawable/ic_transactions"
                     app:tint="@color/azul2" />
 
@@ -418,15 +414,18 @@
                     android:layout_weight="1"
                     android:layout_marginStart="12dp"
                     android:text="Productos"
-                    style="@style/TextoGeneral"/>
+                    style="@style/TextoGeneral"
+                    android:textSize="16sp" />
+
                 <ImageView
                     android:id="@+id/ivChevronProductos"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_chevron_down"
                     app:tint="@color/azul2" />
-
             </LinearLayout>
+
+            <!-- SUBMENÚ PRODUCTOS -->
             <LinearLayout
                 android:id="@+id/subMenuProductos"
                 android:layout_width="match_parent"
@@ -449,22 +448,16 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_transactions"
-                        app:tint="@color/black" />
+                        app:tint="@color/azul2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Ver transacciones"
-                        android:textColor="#333333" />
+                        android:text="Ver productos"
+                        style="@style/TextoGeneral" />
                 </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/azul2" />
         </LinearLayout>
-
-
     </ScrollView>
 </FrameLayout>

@@ -27,10 +27,6 @@
             return tipo == TIPO_CREDITO
         }
 
-        // Verifica si es un egreso (débito)
-        fun esEgreso(): Boolean {
-            return tipo == TIPO_DEBITO
-        }
 
         // Obtiene el monto formateado con signo
         fun montoFormateado(): String {
@@ -38,10 +34,6 @@
             return "$signo S/. ${String.format("%.2f", monto)}"
         }
 
-        // Obtiene solo el monto formateado sin signo
-        fun montoSinSigno(): String {
-            return "S/. ${String.format("%.2f", monto)}"
-        }
 
         // Formatea la fecha completa (fecha y hora)
         fun fechaFormateada(): String {
@@ -68,18 +60,4 @@
             return if (esIngreso()) "Ingreso" else "Egreso"
         }
 
-        // Valida que la transacción sea correcta
-        fun esValida(): Boolean {
-            return idUsuario > 0 &&
-                    idMembresia > 0 &&
-                    monto > 0 &&
-                    tipo in listOf(TIPO_CREDITO, TIPO_DEBITO) &&
-                    descripcion.isNotBlank() &&
-                    fecha.isNotBlank()
-        }
-
-        // Obtiene un resumen de la transacción
-        fun resumen(): String {
-            return "${tipoTexto()} - ${montoFormateado()} - ${fechaSoloFecha()}"
-        }
     }

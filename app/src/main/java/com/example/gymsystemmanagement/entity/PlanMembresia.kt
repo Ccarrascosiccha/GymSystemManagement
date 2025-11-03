@@ -56,16 +56,6 @@ data class PlanMembresia(
         }
     }
 
-    fun toContentValues(): ContentValues {
-        return ContentValues().apply {
-            if (id != 0) put("id", id)
-            put("nombre", nombre)
-            put("descripcion", descripcion)
-            put("duracionMeses", duracionMeses)
-            put("precio", precio)
-        }
-    }
-
     fun precioFormateado(): String {
         return currencyFormat.format(precio)
     }
@@ -88,15 +78,5 @@ data class PlanMembresia(
         }
     }
 
-    fun esValido(): Boolean {
-        return nombre.isNotBlank() &&
-                duracionMeses > 0 &&
-                precio > 0
-    }
-
-
-    fun duracionDias(): Int {
-        return duracionMeses * 30
-    }
 
 }

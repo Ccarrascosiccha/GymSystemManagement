@@ -55,8 +55,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Correo"
                 android:layout_marginTop="16dp"
-                app:suffixTextAppearance="@style/input"
-                app:suffixText="\@cibertec.edu.pe">
+                app:suffixTextAppearance="@style/input">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietCorreo"
